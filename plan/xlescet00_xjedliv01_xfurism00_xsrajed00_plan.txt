@@ -1,0 +1,28 @@
+Termíny:
+-- Vytvoření repozitáře - 11.3.25
+-- Matlib testy         - 21.3.25
+-- Matlib               - 26.3.25
+-- GUI                  - 26.3.25
+-- Debug                - 26.3.25
+-- Makefile             - 28.3.25
+-- Profilling           - 30.3.25
+-- Integrace            - 6.4.25
+-- Dokumentace/README   - 13.4.25
+-- Prezentace           - 13.4.25
+-- Mockup               - 14.4.25
+-- Předbězný deadline   - 15.4.25
+
+Úkoly:
+-- xlescet00 - repozitář, Make file, prezentace, část GUI
+-- xjedliv01 - testy, část instalátoru, část příručky, část dokumentace
+-- xfurism00 - matematická knihovna, profiling, debugging
+-- xsrajed00 - část GUI, část instalátoru, část příručky, část dokumentace
+
+Komunikační kanály:
+-- Discord
+-- telefon pouze v krizových situacích
+
+Verzování:
+-- Github
+-- https://github.com/Ekuuri/ivs-proj2
+
