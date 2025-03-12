@@ -8,7 +8,7 @@ Autori
 
 audentes Fortuna iuvat
 - xlescet00 Tobias Leščenko
-- xjedliv01 Vojta Jedlička
+- xjedliv01 Vojtěch Jedlička
 - xfurism00 Marek Furiš
 - xsrajed00 Dan Šrajer 
 
