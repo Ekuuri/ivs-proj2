@@ -1,5 +1,6 @@
 Termíny:
 -- Vytvoření repozitáře - 11.3.25
+-- Odevzdání plánu(*)   - 19.3.25 (de iure 20.3.25 7:00)
 -- Matlib testy         - 21.3.25
 -- Matlib               - 26.3.25
 -- GUI                  - 26.3.25
@@ -11,6 +12,7 @@ Termíny:
 -- Prezentace           - 13.4.25
 -- Mockup               - 14.4.25
 -- Předbězný deadline   - 15.4.25
+-- Deadline(*)          - 31.4.25 (de iure 1.5.25 7:00)
 
 Úkoly:
 -- xlescet00 - repozitář, Make file, prezentace, část GUI
@@ -19,7 +21,7 @@ Termíny:
 -- xsrajed00 - část GUI, část instalátoru, část příručky, část dokumentace
 
 Komunikační kanály:
--- Discord
+-- Discord server
 -- telefon pouze v krizových situacích
 
 Verzování:
