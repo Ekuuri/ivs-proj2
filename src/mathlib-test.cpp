@@ -13,7 +13,7 @@
 * @author Vojtěch Jedlička
 */
 
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 #include "mathlib_code.h"
 
 using namespace:: testing;
@@ -26,17 +26,17 @@ TEST(addition, positiveNumbers){
 
 TEST(addition, negativeNumbers){
     EXPECT_EQ(-25, addition(-32, 12));
-    EXPECT_EQ(2, addtion(-255, 257));
+    EXPECT_EQ(2, addition(-255, 257));
     EXPECT_EQ(0, addition(-32, 32));
 }
 
 TEST(addition, problematicInputs){
     EXPECT_EQ(2, addition(12, addition(-32, 20)));
     EXPECT_EQ(-4, addition(-4, 0));
-    EXPECT_EQ(addition(12,4), additon(4, 12));
-    EXPECT_EQ(28.13, addition(23.98, 4.15));
+    EXPECT_EQ(addition(12,4), addition(4, 12));
+    EXPECT_DOUBLE_EQ(28.13, addition(23.98, 4.15));
     EXPECT_EQ(12505224, addition(12462310, 42914));
-    EXPECT_EQ(-3.82, addition(0, -3.82));
+    EXPECT_DOUBLE_EQ(-3.82, addition(0, -3.82));
     EXPECT_DOUBLE_EQ(369.54627659, addition(301.18897659, 68.3573));
 }
 
@@ -53,10 +53,10 @@ TEST(subtraction, negativeNumbers){
 
 TEST(subtraction, problematicInputs){
     EXPECT_EQ(-4, subtraction(-4, 0));
-    EXPECT_EQ(subtraction(468,987), subtraction(987, 468));
-    EXPECT_EQ(1846,33, subtraction(1854.98, 8.65));
+    EXPECT_NE(subtraction(468,987), subtraction(987, 468));
+    EXPECT_DOUBLE_EQ(1846.33, subtraction(1854.98, 8.65));
     EXPECT_EQ(6972560, subtraction(54814875, 47842315));
-    EXPECT_EQ(-54.878, subtraction(0, -54.878));
+    EXPECT_DOUBLE_EQ(-54.878, subtraction(0, -54.878));
     EXPECT_DOUBLE_EQ(442748.21001, subtraction(447355, 4606.78999));
 }
 
@@ -86,7 +86,7 @@ TEST(division, problematicInputs){
     EXPECT_EQ(0, division(0, 684));
     EXPECT_EQ(0, division(0, -846));
     EXPECT_ANY_THROW(division(99771, 0));
-    EXPECT_NE(divison(14,7), division(7,14));
+    EXPECT_NE(division(14,7), division(7,14));
     EXPECT_DOUBLE_EQ(10626.98412698413, division(6695, 0.63));
     EXPECT_DOUBLE_EQ(3.709954307870418, division(541.568, 145.977));
 }
@@ -122,9 +122,9 @@ TEST(exponentiation, problematicInputs){
 
 TEST(nthRoot, normalInputs){
     EXPECT_EQ(2, nthRoot(64, 6));
-    EXPECT_DOUBLE_EQ(0,736008935 ,nthRoot(0.4, 3));
+    EXPECT_DOUBLE_EQ(0.736008935 ,nthRoot(0.4, 3));
     EXPECT_DOUBLE_EQ(11.44699, nthRoot(2250654, 6));
-    EXPECT_DOUBLE_EQ(0.00024414,nthRoot(16, -3));
+    EXPECT_DOUBLE_EQ(0.3968502629920499, nthRoot(16, -3));
 }
 
 TEST(nthRoot, problematicInputs){
