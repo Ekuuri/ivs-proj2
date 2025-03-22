@@ -16,7 +16,14 @@
 #include <gtest/gtest.h>
 #include "mathlib_code.h"
 
-using namespace:: testing;
+using namespace testing;
+
+/**
+ * Test suites are named after mathematical functions that they test.
+ * Functions are tested for standard inputs which is one collection of tests
+ * and for inputs that can be somehow problematic (because of sign, 0 etc.) 
+ * which is another collection of tests.
+ */
 
 
 TEST(addition, positiveNumbers){
@@ -25,13 +32,13 @@ TEST(addition, positiveNumbers){
 }
 
 TEST(addition, negativeNumbers){
-    EXPECT_EQ(-25, addition(-32, 12));
+    EXPECT_EQ(-20, addition(-32, 12));
     EXPECT_EQ(2, addition(-255, 257));
     EXPECT_EQ(0, addition(-32, 32));
 }
 
 TEST(addition, problematicInputs){
-    EXPECT_EQ(2, addition(12, addition(-32, 20)));
+    EXPECT_EQ(0, addition(12, addition(-32, 20)));
     EXPECT_EQ(-4, addition(-4, 0));
     EXPECT_EQ(addition(12,4), addition(4, 12));
     EXPECT_DOUBLE_EQ(28.13, addition(23.98, 4.15));
@@ -56,7 +63,7 @@ TEST(subtraction, problematicInputs){
     EXPECT_NE(subtraction(468,987), subtraction(987, 468));
     EXPECT_DOUBLE_EQ(1846.33, subtraction(1854.98, 8.65));
     EXPECT_EQ(6972560, subtraction(54814875, 47842315));
-    EXPECT_DOUBLE_EQ(-54.878, subtraction(0, -54.878));
+    EXPECT_DOUBLE_EQ(54.878, subtraction(0, -54.878));
     EXPECT_DOUBLE_EQ(442748.21001, subtraction(447355, 4606.78999));
 }
 
@@ -79,7 +86,7 @@ TEST(division, normalInputs){
     EXPECT_EQ(9, division(63, 7));
     EXPECT_EQ(1165, division(1149855, 987));
     EXPECT_EQ(-47, division(-39668, 844));
-    EXPECT_EQ(123, division(-11808, -123));
+    EXPECT_EQ(96, division(-11808, -123));
 }
 
 TEST(division, problematicInputs){
@@ -101,6 +108,7 @@ TEST(factorial, problematicInputs){
     EXPECT_EQ(1, factorial(0));
     EXPECT_ANY_THROW(factorial(-1));
     EXPECT_ANY_THROW(factorial(-38));
+    EXPECT_ANY_THROW(factorial(0.26));
 }
 
 TEST(exponentiation, normalInputs){
@@ -115,25 +123,44 @@ TEST(exponentiation, problematicInputs){
     EXPECT_EQ(1, exponentiation(1632, 0));
     EXPECT_EQ(0, exponentiation(0, 64614));
     EXPECT_EQ(1, exponentiation(0.34, 0));
-    EXPECT_EQ(-282429536481, exponentiation(-81, 6));
+    EXPECT_EQ(282429536481, exponentiation(-81, 6));
     EXPECT_ANY_THROW(exponentiation(7845, -78));
     EXPECT_ANY_THROW(exponentiation(4656, 0.540));
 }
 
 TEST(nthRoot, normalInputs){
     EXPECT_EQ(2, nthRoot(64, 6));
-    EXPECT_DOUBLE_EQ(0.736008935 ,nthRoot(0.4, 3));
-    EXPECT_DOUBLE_EQ(11.44699, nthRoot(2250654, 6));
-    EXPECT_DOUBLE_EQ(0.3968502629920499, nthRoot(16, -3));
+    EXPECT_DOUBLE_EQ(0.73680629972, nthRoot(0.4, 3));
+    EXPECT_DOUBLE_EQ(11.4476969088, nthRoot(2250654, 6));
+    EXPECT_DOUBLE_EQ(0.39685026299  , nthRoot(16, -3));
 }
 
 TEST(nthRoot, problematicInputs){
     EXPECT_EQ(-5, nthRoot(-125, 3));
     EXPECT_EQ(0, nthRoot(0, 13));
-    EXPECT_DOUBLE_EQ(0.7937005259840998, nthRoot(0.25, 6));
+    EXPECT_DOUBLE_EQ(0.79370052598, nthRoot(0.25, 6));
     EXPECT_ANY_THROW(nthRoot(-35, 2));
 }
 
+/**
+ * Modulo should be implemented in the same way as in C++
+ * Visible on the example:
+ * -161641 / 716 = -225
+ * -161641 - (-225 * 716) = -161641 + 161100 =  -541
+ */
+TEST(modulo, normalInputs){
+    EXPECT_EQ(1, modulo(5, 2));
+    EXPECT_EQ(272, modulo(64114, 466)); 
+    EXPECT_EQ(-541, modulo(-161641, 716));
+    EXPECT_EQ(-25, modulo(-641, -154));
+}
+
+TEST(modulo, problematicInputs){
+    EXPECT_EQ(-3, modulo(-7878, 25));
+    EXPECT_DOUBLE_EQ(0.25, modulo(0.25, 100));
+    EXPECT_DOUBLE_EQ(0.105, modulo(0.897, 0.264));
+    EXPECT_EQ(2252, modulo(791313, -8671));
+}
 
 
 int main(int argc, char **argv){
