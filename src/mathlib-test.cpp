@@ -1,7 +1,7 @@
 /****************************************************************** 
 * Project name: IVS 2 project
 * Date: 20.3.2025
-* Last change: 20.3.2024
+* Last change: 25.3.2025
 * Team: audentes Fortuna iuvat 
 * Author: Vojtěch Jedlička
 * Brief: Test for test driven development of math library 
