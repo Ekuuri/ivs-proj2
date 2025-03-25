@@ -28,7 +28,7 @@ using namespace testing;
 
 TEST(addition, positiveNumbers){
     EXPECT_EQ(12, addition(5, 7));
-    EXPECT_EQ(3012, addition(2950, 72));
+    EXPECT_EQ(3022, addition(2950, 72));
 }
 
 TEST(addition, negativeNumbers){
