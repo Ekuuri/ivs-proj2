@@ -22,7 +22,7 @@ double multiplication(double x, double y);
 
 double division(double x, double y);
 
-double factorial(int x);
+double factorial(double x);
 
 double exponentiation(double x, int n);
 

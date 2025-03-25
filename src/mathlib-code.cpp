@@ -16,6 +16,7 @@
 
 #include "mathlib-code.h"
 #include <stdexcept>
+#include <iostream>
 
 
 double addition(double x, double y) {
@@ -35,12 +36,13 @@ double division(double x, double y) {
     return x / y;
 }
 
-double factorial(int x) {
-    int y = 1;
+double factorial(double x) {
+    double y = 1;
     if (x < 0) throw std::runtime_error("An error occurred");
     if (x == 0) return y;
+    if (modulo(x, 1.0) != 0) throw std::runtime_error("An error occurred");
 
-    for (int i = x; i > 0; i--) {
+    for (double i = x; i > 0; i--) {
         y *= i;
     }
     return y;
@@ -48,11 +50,12 @@ double factorial(int x) {
 
 double exponentiation(double x, int n) {
     if (n == 0) return 1;
+    if (n < 0) throw std::runtime_error("An error occurred");
+    if (modulo(x, 1.0) != 0) throw std::runtime_error("An error occurred");
     double result = 1;
     for (int i = 0; i < n; i++) {
         result *= x;
     }
-    if (n < 0) return x/result;
     return result;
 }
 
