@@ -55,9 +55,10 @@ double exponentiation(double x, int n) {
     return result;
 }
 
-double nthRoot(double x, double n, double precision = 0.0000001) {
+double nthRoot(double x, double n) {
     if (x < 0 && modulo(n, 2) != 1) return -1;
     
+    double precision = 0.0000001;
     double lowerBound = 0;
     double higherBound = x;
     double mid;
