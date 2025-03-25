@@ -15,6 +15,7 @@
 
 
 #include "mathlib-code.h"
+#include <stdexcept>
 
 
 double addition(double x, double y) {
