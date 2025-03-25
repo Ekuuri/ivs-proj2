@@ -31,13 +31,13 @@ double multiplication(double x, double y) {
 }
 
 double division(double x, double y) {
-    if (y == 0) return -1;
+    if (y == 0) throw std::runtime_error("An error occurred");
     return x / y;
 }
 
 double factorial(int x) {
     int y = 1;
-    if (x < 0) return -1;
+    if (x < 0) throw std::runtime_error("An error occurred");
     if (x == 0) return y;
 
     for (int i = x; i > 0; i--) {
@@ -57,7 +57,7 @@ double exponentiation(double x, int n) {
 }
 
 double nthRoot(double x, double n) {
-    if (x < 0 && modulo(n, 2) != 1) return -1;
+    if (x < 0 && modulo(n, 2) != 1) throw std::runtime_error("An error occurred");
     
     double precision = 0.0000001;
     double lowerBound = 0;
@@ -83,6 +83,6 @@ double nthRoot(double x, double n) {
 }
 
 double modulo(double x, double y) {
-    if (y == 0) return -1;
+    if (y == 0) throw std::runtime_error("An error occurred");
     return x - y * static_cast<int>(x / y);
 }
