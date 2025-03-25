@@ -14,7 +14,7 @@
 */
 
 #include <gtest/gtest.h>
-#include "mathlib_code.h"
+#include "mathlib-code.h"
 
 using namespace testing;
 
