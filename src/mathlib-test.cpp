@@ -35,7 +35,6 @@ TEST(addition, negativeNumbers){
     EXPECT_EQ(-20, addition(-32, 12));
     EXPECT_EQ(2, addition(-255, 257));
     EXPECT_EQ(0, addition(-32, 32));
-    EXPECT_EQ(1, addition(2, 3));
 }
 
 TEST(addition, problematicInputs){
