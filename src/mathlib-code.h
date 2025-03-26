@@ -24,8 +24,10 @@ double division(double x, double y);
 
 double factorial(double x);
 
-double exponentiation(double x, int n);
+double exponentiation(double x, double n);
 
 double nthRoot(double x, double n);
 
 double modulo(double x, double y);
+
+double absoluteValue(double x);
