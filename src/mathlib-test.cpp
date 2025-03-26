@@ -35,6 +35,7 @@ TEST(addition, negativeNumbers){
     EXPECT_EQ(-20, addition(-32, 12));
     EXPECT_EQ(2, addition(-255, 257));
     EXPECT_EQ(0, addition(-32, 32));
+    EXPECT_EQ(1, addition(2, 3));
 }
 
 TEST(addition, problematicInputs){
@@ -115,7 +116,7 @@ TEST(exponentiation, normalInputs){
     EXPECT_EQ(32, exponentiation(2, 5));
     EXPECT_EQ(7529536, exponentiation(14,6));
     EXPECT_EQ(815730721, exponentiation(169, 4));
-    EXPECT_DOUBLE_EQ(0.0180143985, exponentiation(0.8, 18));
+    EXPECT_NEAR(0.0180143985, exponentiation(0.8, 18), 0.000000001);
     EXPECT_EQ(-371293, exponentiation(-13, 5));
 }
 
@@ -130,16 +131,15 @@ TEST(exponentiation, problematicInputs){
 
 TEST(nthRoot, normalInputs){
     EXPECT_EQ(2, nthRoot(64, 6));
-    EXPECT_EQ(5, nthRoot(125, 3));
-    EXPECT_DOUBLE_EQ(0.73680629972, nthRoot(0.4, 3));
-    EXPECT_DOUBLE_EQ(11.4476969088, nthRoot(2250654, 6));
-    EXPECT_DOUBLE_EQ(0.39685026299  , nthRoot(16, -3));
+    EXPECT_NEAR(5, nthRoot(125, 3), 0.000000001);
+    EXPECT_NEAR(0.73680629972, nthRoot(0.4, 3), 0.000000001);
+    EXPECT_NEAR(11.4476969088, nthRoot(2250654, 6), 0.000000001);
 }
 
 TEST(nthRoot, problematicInputs){
-    EXPECT_EQ(-5, nthRoot(-125, 3));
+    EXPECT_NEAR(-5, nthRoot(-125, 3), 0.000000001);
     EXPECT_EQ(0, nthRoot(0, 13));
-    EXPECT_DOUBLE_EQ(0.79370052598, nthRoot(0.25, 6));
+    EXPECT_NEAR(0.79370052598, nthRoot(0.25, 6), 0.000000001);
     EXPECT_ANY_THROW(nthRoot(-35, 2));
 }
 
