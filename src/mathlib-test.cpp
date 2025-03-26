@@ -130,6 +130,7 @@ TEST(exponentiation, problematicInputs){
 
 TEST(nthRoot, normalInputs){
     EXPECT_EQ(2, nthRoot(64, 6));
+    EXPECT_EQ(5, nthRoot(125, 3));
     EXPECT_DOUBLE_EQ(0.73680629972, nthRoot(0.4, 3));
     EXPECT_DOUBLE_EQ(11.4476969088, nthRoot(2250654, 6));
     EXPECT_DOUBLE_EQ(0.39685026299  , nthRoot(16, -3));
@@ -159,6 +160,7 @@ TEST(modulo, problematicInputs){
     EXPECT_EQ(-3, modulo(-7878, 25));
     EXPECT_DOUBLE_EQ(0.25, modulo(0.25, 100));
     EXPECT_DOUBLE_EQ(0.105, modulo(0.897, 0.264));
+    EXPECT_DOUBLE_EQ(0.540, modulo(0.540, 1.0));
     EXPECT_EQ(2252, modulo(791313, -8671));
 }
 
