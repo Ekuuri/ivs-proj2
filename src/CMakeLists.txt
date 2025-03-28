@@ -1,6 +1,7 @@
 set(SOURCES
     calc.cpp
     mathlib-code.cpp
+    mathlib-tests.cpp
     profiling.cpp
 )
 

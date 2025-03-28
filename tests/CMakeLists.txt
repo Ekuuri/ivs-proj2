@@ -1,3 +1,0 @@
-add_executable(epicCalculatorTest mathlib-test.cpp)
-target_link_libraries(epicCalculatorTest gtest gtest_main pthread)
-add_test(NAME epicCalculatorTest COMMAND epicCalculatorTest)
