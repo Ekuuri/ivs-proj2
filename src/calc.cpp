@@ -224,7 +224,9 @@ private slots:
     }
 
     /**
-     * @brief Slot to handle clear button text changes
+     * @brief Slot to handle clear button text changes.
+     * 
+     * Sets clear button text to CE, whenever display is not empty.
      */
     void onInputChanged() {
         if (ui->Display->text(.isEmpty())) {
