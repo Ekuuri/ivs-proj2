@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-#include<iostream>
-using namespace std;
-=======
 /******************************************************************
  * Project name: IVS 2 project
  * Date: 1.4.2025
- * Last change: 1.4.2025
+ * Last change: 18.4.2025
  * Team: audentes Fortuna iuvat
  * Author: Marek Furiš
- * Brief: Test for test driven development of math library
+ * Brief: Profiling implementation
  *****************************************************************/
 /**
  * @file profiling.cpp
@@ -19,7 +15,6 @@ using namespace std;
 
 #include <iostream>
 #include "mathlib-code.h"
->>>>>>> main
 
 int main() {
 	float count = 0.0;
