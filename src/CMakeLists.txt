@@ -1,8 +1,5 @@
 set(SOURCES
     calc.cpp
-    mathlib-code.cpp
-    mathlib-tests.cpp
-    profiling.cpp
 )
 
 set(HEADERS
@@ -13,4 +10,4 @@ set(HEADERS
 add_executable(epicCalculator ${SOURCES} ${HEADERS})
 
 # Link Qt
-target_link_libraries(epicCalculator Qt5::Core Qt5::Gui Qt5::Widgets)
+target_link_libraries(epicCalculator Qt6::Core Qt6::Gui Qt6::Widgets)

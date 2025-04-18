@@ -4,9 +4,9 @@ project(epicCalculator)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_PREFIX_PATH "/usr/lib/x86_64-linux-gnu/qt5" ${CMAKE_PREFIX_PATH})
+set(CMAKE_PREFIX_PATH "/home/ivs/Qt/6.8.2/gcc_64" ${CMAKE_PREFIX_PATH})
 
-find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
 
 set(GOOGLETEST_VERSION 1.16.0)
 set(GTEST_DIR "${CMAKE_SOURCE_DIR}/googletest")
