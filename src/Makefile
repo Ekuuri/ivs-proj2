@@ -5,13 +5,13 @@ all: $(BUILD_DIR)/Makefile
 	
 $(BUILD_DIR)/Makefile:
 	mkdir -p $(BUILD_DIR)
-	cmake -S ../ -B $(BUILD_DIR)
+	cmake -S . -B $(BUILD_DIR)
 	
 clean:
 	rm -rf $(BUILD_DIR)
 	
 run: all
-	./$(BUILD_DIR)/epicCalculator
+	./$(BUILD_DIR)/src/epicCalculator
 	
 .PHONY: all clean run
 	

@@ -4,14 +4,14 @@
  * Last change: 27.3.2025
  * Team: audentes Fortuna iuvat
  * Author: Dan Šrajer
- * Brief:
+ * Brief: Interactions with the UI
  *****************************************************************/
 
 #include "calc.h"
 #include "calc-ui.h"  // Generated file from calc.ui
 
 // Constructor
-Calculator::Calculator(QWidget *parent = nullptr)
+Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Calculator) {
     // Setup the user interface from the .ui file.
     ui->setupUi(this);

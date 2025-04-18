@@ -1,8 +1,12 @@
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+
 set(SOURCES
     calc.cpp
 )
 
 set(HEADERS
+    calc.h
     calc-ui.h
     mathlib-code.h
 )
