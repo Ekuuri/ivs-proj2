@@ -1,11 +1,18 @@
 /******************************************************************
  * Project name: IVS 2 project
  * Date: 26.3.2025
- * Last change: 27.3.2025
+ * Last change: 18.4.2025
  * Team: audentes Fortuna iuvat
  * Author: Dan Šrajer
  * Brief: Interactions with the UI
  *****************************************************************/
+/**
+* @file calc.cpp
+*
+* @brief Implementation of UI interactions
+* @author Dan Šrajer
+* @todo look into the regular expression (QRegularExpression) in onClearClicked likely remake from scratch
+*/
 
 #include "calc.h"
 #include "calc-ui.h"  // Generated file from calc.ui

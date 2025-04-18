@@ -4,8 +4,15 @@
 * Last change: 18.4.2025
 * Team: audentes Fortuna iuvat 
 * Author: Tobias Leščenko
-* Brief: Header file for the interactions with the UI
+* Brief: Test for test driven development of math library
 *****************************************************************/
+/**
+* @file calc.h
+*
+* @brief Header file of UI interactions
+* @author Tobias Leščenko
+*/
+
 #pragma once
 
 #include <QMainWindow>
@@ -31,6 +38,7 @@ public:
      * @brief Constructor for the Calculator class.
      *
      * Sets up the user interface and connects signals to corresponding slots.
+     * 
      * @param parent The parent widget, default is nullptr.
      */
     explicit Calculator(QWidget *parent = nullptr);
@@ -47,6 +55,7 @@ private slots:
      * @brief Slot to handle number button clicks.
      * 
      * Appends the clicked number to the display.
+     * 
      * @param button The button that was clicked.
      */
     void onNumberClicked();
