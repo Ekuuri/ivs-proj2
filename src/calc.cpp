@@ -7,10 +7,7 @@
  * Brief:
  *****************************************************************/
 
-#include <QApplication>
-#include <QMainWindow>
-#include <QPushButton>
-#include <QLineEdit>
+#include "calc.h"
 #include "calc-ui.h"  // Generated file from calc.ui
 
 /**
@@ -229,7 +226,7 @@ private slots:
      * Sets clear button text to CE, whenever display is not empty.
      */
     void onInputChanged() {
-        if (ui->Display->text(.isEmpty())) {
+        if (ui->Display->text().isEmpty()) {
             ui->ButtonClear->setText("C");
         } 
         else {
@@ -243,12 +240,12 @@ private slots:
      * CE clears last input.
      * C clears the whole display.
      */
-    void onClearclicked() {
+    void onClearClicked() {
         if (ui->ButtonClear->text() == "CE") {
             QString text = ui->Display->text();
-            int lastOp = text.lastIndexOf(QRegExp("[+-*/]"));
+            int lastOp = text.lastIndexOf(QRegularExpression("[+-*/]"));
 
-            if (lstOp != -1) {
+            if (lastOp != -1) {
                 ui->Display->setText(text.left(lastOp + 1));
             }
             else {
