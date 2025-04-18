@@ -10,6 +10,10 @@ $(BUILD_DIR)/Makefile:
 clean:
 	rm -rf $(BUILD_DIR)
 	
+test: all
+	./$(BUILD_DIR)/src/mathlibTest
+	
+	
 run: all
 	./$(BUILD_DIR)/src/epicCalculator
 	
