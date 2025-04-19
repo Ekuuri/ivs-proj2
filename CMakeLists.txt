@@ -16,6 +16,24 @@ include(GNUInstallDirs)
 option(BUILD_GMOCK "Builds the googlemock subproject" ON)
 option(INSTALL_GTEST "Enable installation of googletest. (Projects embedding googletest may want to turn this OFF.)" ON)
 
+file(GLOB DIR_CONTENT ${GTEST_DIR}/*)
+if(NOT DIR_CONTENT)
+  execute_process(
+    COMMAND git submodule init
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    RESULT_VARIABLE _git_init_result
+    OUTPUT_VARIABLE _git_init_out
+    ERROR_VARIABLE _git_init_err
+  )
+  execute_process(
+    COMMAND git submodule update
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    RESULT_VARIABLE _git_update_result
+    OUTPUT_VARIABLE _git_update_out
+    ERROR_VARIABLE _git_update_err
+  )
+endif()
+
 if(BUILD_GMOCK)
   add_subdirectory(${GTEST_DIR}/googlemock googletest_build)
 else()
