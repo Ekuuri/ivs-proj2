@@ -6,7 +6,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_PREFIX_PATH "/home/ivs/Qt/6.8.2/gcc_64" ${CMAKE_PREFIX_PATH})
 
-find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets)
+if (Qt6_FOUND)
+  message(STATUS "Found Qt6")
+else()
+  message(FATAL_ERROR "Cannot find Qt6, maybe try 'sudo apt install qtcreator qt6-base-dev'")
+endif()
 
 set(GOOGLETEST_VERSION 1.16.0)
 set(GTEST_DIR "${CMAKE_SOURCE_DIR}/googletest")
