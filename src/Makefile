@@ -43,6 +43,7 @@ pack: check doc all
 	
 	echo "Zipping package into $(PACK_DIR)/$(ZIPFILE)..."
 	cd $(PACK_DIR) && zip -r $(notdir $(ZIPFILE)) .
+	cd $(PACK_DIR) && find . ! -name $(notdir $(ZIPFILE)) -delete
 	echo "Package created: $(PACK_DIR)/$(ZIPFILE)"
 	
 	
