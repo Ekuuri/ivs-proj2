@@ -10,7 +10,7 @@ $(BUILD_DIR)/Makefile:
 	cmake -S .. -B $(BUILD_DIR)
 	
 clean:
-	rm -rf $(BUILD_DIR) $(PACK_DIR)
+	rm -rf $(BUILD_DIR) $(PACK_DIR) html latex
 	
 check:
 	echo "Checking for required project files..."
