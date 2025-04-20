@@ -32,7 +32,7 @@ int main() {
 	float x_ = multiplication(division(1, count), sum);
 	float s = nthRoot(multiplication(division(1, subtraction(count, 1)), subtraction(sumSquared, multiplication(count, exponentiation(x_, 2)))), 2);
 
-	std::cout << "s = " << s << std::endl;
+	std::cout << s << std::endl;
 
     return 0;
 }
