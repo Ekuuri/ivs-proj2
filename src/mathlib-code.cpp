@@ -90,10 +90,6 @@ double nthRoot(double x, double n) {
         higherBound = 1;  // If x is between 0 and 1, set upper bound to 1
     }
 
-    if (x < 1) {
-        higherBound = 1; // If x is between 0 and 1, set upper bound to 1
-    }
-
     while (higherBound - lowerBound > precision) {
         mid = (lowerBound + higherBound) / 2;
         double midPower = exponentiation(mid, n);
