@@ -57,21 +57,6 @@ public:
     };
 
     /**
-     * @brief Prints the expression represented by the tree node.
-     */
-    virtual void print() {
-        if (left) {
-            left->print();
-        }
-        if (right) {
-            right->print();
-        }
-        if (arg) {
-            arg->print();
-        }
-    };
-
-    /**
      * @brief Evaluates the expression represented by the tree node.
      * @result The result of the evaluation.
      */
@@ -219,10 +204,6 @@ public:
     double value; ///< The integer value.
 
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
-
-    void print() override {
-        std::cout << value;
-    }
 
     double eval() override {
         return value;
