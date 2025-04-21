@@ -173,3 +173,5 @@ int main(int argc, char *argv[]) {
 
     return app.exec();      ///< Start the event loop
 }
+
+/*** End of file calc.cpp ***/

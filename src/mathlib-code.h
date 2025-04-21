@@ -7,11 +7,12 @@
 * Brief: Header file of mathematical library functions
 *****************************************************************/
 /**
-* @file mathlib_code.h
+* @file mathlib-code.h
 *
 * @brief Header file of mathematical library functions
 * @author Marek Furiš
 */
+#pragma once
 
 /**
  * @brief Computes the sum of two floating-point numbers.
@@ -110,3 +111,5 @@ double modulo(double x, double y);
  * @return The absolute value of x.
  */
 double absoluteValue(double x);
+
+/*** End of file mathlib-code.h ***/

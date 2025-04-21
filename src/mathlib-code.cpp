@@ -7,7 +7,7 @@
  * Brief: Implementantion of functions from mathlib-code.h
  *****************************************************************/
 /**
- * @file mathlib_code.cpp
+ * @file mathlib-code.cpp
  *
  * @brief Implementantion of functions from mathlib-code.h
  * @author Marek Furiš
@@ -123,3 +123,5 @@ double absoluteValue(double x) {
     }
     return x;
 }
+
+/*** End of file mathlib-code.cpp ***/
