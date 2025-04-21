@@ -54,9 +54,14 @@ TreeNode* parseFactor() {
             number += nextToken;
             scanToken();
         }
-        // Create an Integer node for the parsed number
+
         auto result = new Integer();
         result->value = number.toDouble();
+
+        if (nextToken == '!') {
+            return new Factorial(result);
+        }
+        
         return result;
     }
     else if (nextToken == '(') {
