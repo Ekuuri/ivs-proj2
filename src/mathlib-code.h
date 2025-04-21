@@ -12,6 +12,7 @@
 * @brief Header file of mathematical library functions
 * @author Marek Furiš
 */
+
 #pragma once
 
 /**
