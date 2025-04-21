@@ -33,13 +33,14 @@ doc:
 pack: check doc all
 	echo "Creating package directory $(PACK_DIR)..."
 	rm -rf $(PACK_DIR)
-	git clone .. $(PACK_DIR)
+	mkdir -p $(PACK_DIR)/repo
+	git clone .. $(PACK_DIR)/repo
 	
-	mkdir -p $(PACK_DIR)/documentation
-	cp -r docs/html $(PACK_DIR)/documentation || true
+	mkdir -p $(PACK_DIR)/doc
+	cp -r html/. $(PACK_DIR)/doc
 	
 	# todo: installers
-	mkdir -p $(PACK_DIR)/installers
+	mkdir -p $(PACK_DIR)/install
 	
 	echo "Zipping package into $(PACK_DIR)/$(ZIPFILE)..."
 	cd $(PACK_DIR) && zip -r $(notdir $(ZIPFILE)) .
