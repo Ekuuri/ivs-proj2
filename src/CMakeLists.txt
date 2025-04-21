@@ -4,12 +4,15 @@ set(CMAKE_AUTORCC ON)
 
 set(SOURCES
     calc.cpp
+    mathlib-code.cpp
+    parser.cpp
 )
 
 set(HEADERS
     calc.h
     calc-ui.h
     mathlib-code.h
+    parser.h
 )
 
 set(UIS

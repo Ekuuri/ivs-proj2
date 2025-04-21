@@ -20,7 +20,6 @@
 #include "calc.h"
 #include "calc-ui.h"  // Generated file from calc.ui
 #include "parser.h"
-#include "parser.cpp"
 
 // Constructor
 Calculator::Calculator(QWidget *parent)
@@ -97,7 +96,7 @@ void Calculator::onPowerClicked() {
 }
 
 void Calculator::onSqrtClicked() {
-    ui->Display->insert("sqrt(");
+    ui->Display->insert(QChar(0x221A));
 }
 
 void Calculator::onFactorialClicked() {
