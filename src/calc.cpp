@@ -13,6 +13,8 @@
 * @author Dan Šrajer
 * @todo look into the regular expression (QRegularExpression) in onClearClicked likely remake from scratch
 * @bug when user clicks out of the display, the user can input anything on the keyboard
+* @bug enter doesnt do equals operation
+* @bug calculator window extends more than needed
 */
 
 #include "calc.h"
