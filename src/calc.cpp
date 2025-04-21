@@ -12,10 +12,13 @@
 * @brief Implementation of UI interactions
 * @author Dan Šrajer
 * @todo look into the regular expression (QRegularExpression) in onClearClicked likely remake from scratch
+* @bug when user clicks out of the display, the user can input anything on the keyboard
 */
 
 #include "calc.h"
 #include "calc-ui.h"  // Generated file from calc.ui
+#include "parser.h"
+#include "parser.cpp"
 
 // Constructor
 Calculator::Calculator(QWidget *parent)
@@ -170,6 +173,8 @@ int main(int argc, char *argv[]) {
 
     Calculator calculator;  ///< Create the calculator window
     calculator.show();      ///< Show the calculator window
+
+    cout << 
 
     return app.exec();      ///< Start the event loop
 }
