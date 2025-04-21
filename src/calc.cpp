@@ -12,6 +12,7 @@
 * @brief Implementation of UI interactions
 * @author Dan Šrajer
 * @todo look into the regular expression (QRegularExpression) in onClearClicked likely remake from scratch
+* @todo add absolute value operation and buttons
 * @bug when user clicks out of the display, the user can input anything on the keyboard
 * @bug enter doesnt do equals operation
 * @bug calculator window extends more than needed
