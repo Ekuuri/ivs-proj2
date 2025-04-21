@@ -15,94 +15,164 @@
 
 #pragma once
 
+/**
+ * @class TreeNode
+ * @brief Base class for all nodes in the mathematical expression tree.
+ */
 class TreeNode {
 private:
-    TreeNode *left;
-    TreeNode *right;
+    TreeNode *left; ///< Pointer to the left child node.
+    TreeNode *right; ///< Pointer to the right child node.
 public:
+    /**
+     * @brief Constructor for TreeNode.
+     * @param left Pointer to the left child node.
+     * @param right Pointer to the right child node.
+     */
     TreeNode(TreeNode *left, TreeNode *right);
+
+    /**
+     * @brief Destructor for TreeNode.
+     */
     ~TreeNode();
 };
 
+/**
+ * @class Add
+ * @brief Represents addition operation in the expression tree.
+ */
 class Add : TreeNode {
-private:
-    /* data */
 public:
-    using TreeNode::TreeNode;
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
 };
 
+/**
+ * @class Subtract
+ * @brief Represents subtraction operation in the expression tree.
+ */
 class Subtract : TreeNode {
-private:
-    /* data */
 public:
-    using TreeNode::TreeNode;
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
 };
 
+/**
+ * @class Mult
+ * @brief Represents multiplication operation in the expression tree.
+ */
 class Mult : TreeNode {
-private:
-    /* data */
 public:
-    using TreeNode::TreeNode;
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
 };
 
+/**
+ * @class Div
+ * @brief Represents division operation in the expression tree.
+ */
 class Div : TreeNode {
-private:
-    /* data */
 public:
-    using TreeNode::TreeNode;
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
 };
 
+/**
+ * @class Factorial
+ * @brief Represents factorial operation in the expression tree.
+ */
 class Factorial : TreeNode {
-private:
-    /* data */
 public:
+    /**
+     * @brief Constructor for Factorial.
+     */
     Factorial();
+
+    /**
+     * @brief Destructor for Factorial.
+     */
     ~Factorial();
 };
 
+/**
+ * @class Exp
+ * @brief Represents exponentiation operation in the expression tree.
+ */
 class Exp : TreeNode {
-private:
-    /* data */
 public:
+    /**
+     * @brief Constructor for Exp.
+     */
     Exp();
+
+    /**
+     * @brief Destructor for Exp.
+     */
     ~Exp();
 };
 
+/**
+ * @class Root
+ * @brief Represents root operation in the expression tree.
+ */
 class Root : TreeNode {
-private:
-    /* data */
 public:
-    using TreeNode::TreeNode;
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
 };
 
+/**
+ * @class Mod
+ * @brief Represents modulus operation in the expression tree.
+ */
 class Mod : TreeNode {
-private:
-    /* data */
 public:
-    using TreeNode::TreeNode;
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
 };
 
+/**
+ * @class Abs
+ * @brief Represents absolute value operation in the expression tree.
+ */
 class Abs : TreeNode {
-private:
-    /* data */
 public:
+    /**
+     * @brief Constructor for Abs.
+     */
     Abs();
+
+    /**
+     * @brief Destructor for Abs.
+     */
     ~Abs();
 };
 
+/**
+ * @class Neg
+ * @brief Represents negation operation in the expression tree.
+ */
 class Neg : TreeNode {
-private:
-    /* data */
 public:
+    /**
+     * @brief Constructor for Neg.
+     */
     Neg();
+
+    /**
+     * @brief Destructor for Neg.
+     */
     ~Neg();
 };
 
+/**
+ * @class Integer
+ * @brief Represents an integer value in the expression tree.
+ */
 class Integer : TreeNode {
-private:
-    /* data */
 public:
+    /**
+     * @brief Constructor for Integer.
+     */
     Integer();
+
+    /**
+     * @brief Destructor for Integer.
+     */
     ~Integer();
 };
 
