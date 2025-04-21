@@ -120,7 +120,7 @@ void Calculator::onClBracketClicked() {
 
 void Calculator::onEqualsClicked() {
     QString expression = ui->Display->text();
-    ui->Display->setText("Result");
+    ui->Display->setText(parse(expression));
 }
 
 void Calculator::onPlaceHolderClicked() {
@@ -173,8 +173,6 @@ int main(int argc, char *argv[]) {
 
     Calculator calculator;  ///< Create the calculator window
     calculator.show();      ///< Show the calculator window
-
-    cout << 
 
     return app.exec();      ///< Start the event loop
 }

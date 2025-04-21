@@ -14,6 +14,7 @@
 */
 
 #include "parser.h"
+#include "calc.h"
 
 // TreeNode::TreeNode(TreeNode *left, TreeNode *right) {
 // }
@@ -86,5 +87,13 @@
 
 // Integer::~Integer() {
 // }
+
+QString parse(QString expression) {
+    QString exp = "1+1";
+    std::cout << exp[0].toLatin1() << std::endl;
+
+    return exp[0];
+}
+
 
 /*** End of file parser.cpp ***/
