@@ -187,8 +187,7 @@ QString parse(QString expression) {
 
     resultTree->print();
 
-
-    return expression[0];
+    return QString::number(resultTree->eval());
 }
 
 
