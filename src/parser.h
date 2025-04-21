@@ -15,26 +15,40 @@
 
 #pragma once
 
+#include "mathlib-code.h"
+#include "mathlib-code.cpp"
+
 /**
  * @class TreeNode
  * @brief Base class for all nodes in the mathematical expression tree.
  */
 class TreeNode {
-private:
+protected:
     TreeNode *left; ///< Pointer to the left child node.
     TreeNode *right; ///< Pointer to the right child node.
+    TreeNode *arg; ///< Pointer to the unary operator child node.
 public:
     /**
-     * @brief Constructor for TreeNode.
+     * @brief Binary constructor for TreeNode.
      * @param left Pointer to the left child node.
      * @param right Pointer to the right child node.
      */
     TreeNode(TreeNode *left, TreeNode *right);
 
     /**
+     * @brief Unary constructor for TreeNode.
+     * @param arg Pointer to the unary operator child node.
+     */
+    TreeNode(TreeNode *arg);
+
+    /**
      * @brief Destructor for TreeNode.
      */
     ~TreeNode();
+
+    virtual void print();
+
+    virtual double eval();
 };
 
 /**
@@ -43,7 +57,11 @@ public:
  */
 class Add : TreeNode {
 public:
-    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
+
+    double eval() override {
+        return addition(left->eval(), right->eval());
+    }
 };
 
 /**
@@ -52,7 +70,11 @@ public:
  */
 class Subtract : TreeNode {
 public:
-    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
+
+    double eval() override {
+        return subtraction(left->eval(), right->eval());
+    }
 };
 
 /**
@@ -61,7 +83,11 @@ public:
  */
 class Mult : TreeNode {
 public:
-    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
+
+    double eval() override {
+        return multiplication(left->eval(), right->eval());
+    }
 };
 
 /**
@@ -70,7 +96,11 @@ public:
  */
 class Div : TreeNode {
 public:
-    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
+
+    double eval() override {
+        return division(left->eval(), right->eval());
+    }
 };
 
 /**
@@ -79,15 +109,11 @@ public:
  */
 class Factorial : TreeNode {
 public:
-    /**
-     * @brief Constructor for Factorial.
-     */
-    Factorial();
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
-    /**
-     * @brief Destructor for Factorial.
-     */
-    ~Factorial();
+    double eval() override {
+        return factorial(arg->eval());
+    }
 };
 
 /**
@@ -96,15 +122,11 @@ public:
  */
 class Exp : TreeNode {
 public:
-    /**
-     * @brief Constructor for Exp.
-     */
-    Exp();
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
-    /**
-     * @brief Destructor for Exp.
-     */
-    ~Exp();
+    double eval() override {
+        return exponentiation(left->eval(), right->eval());
+    }
 };
 
 /**
@@ -113,7 +135,11 @@ public:
  */
 class Root : TreeNode {
 public:
-    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
+
+    double eval() override {
+        return nthRoot(left->eval(), right->eval());
+    }
 };
 
 /**
@@ -122,7 +148,11 @@ public:
  */
 class Mod : TreeNode {
 public:
-    using TreeNode::TreeNode; ///< Inherit TreeNode constructor.
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
+
+    double eval() override {
+        return modulo(left->eval(), right->eval());
+    }
 };
 
 /**
@@ -131,15 +161,11 @@ public:
  */
 class Abs : TreeNode {
 public:
-    /**
-     * @brief Constructor for Abs.
-     */
-    Abs();
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
-    /**
-     * @brief Destructor for Abs.
-     */
-    ~Abs();
+    double eval() override {
+        return absoluteValue(arg->eval());
+    }
 };
 
 /**
@@ -148,15 +174,11 @@ public:
  */
 class Neg : TreeNode {
 public:
-    /**
-     * @brief Constructor for Neg.
-     */
-    Neg();
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
-    /**
-     * @brief Destructor for Neg.
-     */
-    ~Neg();
+    double eval() override {
+        return -(arg->eval());
+    }
 };
 
 /**
@@ -164,16 +186,14 @@ public:
  * @brief Represents an integer value in the expression tree.
  */
 class Integer : TreeNode {
+private:
+    double value; ///< The integer value.
 public:
-    /**
-     * @brief Constructor for Integer.
-     */
-    Integer();
+    using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
-    /**
-     * @brief Destructor for Integer.
-     */
-    ~Integer();
+    double eval() override {
+        return value;
+    }
 };
 
 /*** End of file parser.h ***/

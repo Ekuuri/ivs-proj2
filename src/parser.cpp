@@ -15,11 +15,11 @@
 
 #include "parser.h"
 
-TreeNode::TreeNode(TreeNode *left, TreeNode *right) {
-}
+// TreeNode::TreeNode(TreeNode *left, TreeNode *right) {
+// }
 
-TreeNode::~TreeNode() {
-}
+// TreeNode::~TreeNode() {
+// }
 
 // Add::Add() {
 // }
