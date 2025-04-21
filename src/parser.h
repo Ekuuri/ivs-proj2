@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include <iostream>
 #include "calc.h"
 #include "mathlib-code.h"
 
@@ -71,6 +70,10 @@ class Add : public TreeNode {
 public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the addition operation.
+     * @return The sum of the left and right child nodes.
+     */
     double eval() override {
         return addition(left->eval(), right->eval());
     }
@@ -84,6 +87,10 @@ class Subtract : public TreeNode {
 public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the subtraction operation.
+     * @return The difference between the left and right child nodes.
+     */
     double eval() override {
         return subtraction(left->eval(), right->eval());
     }
@@ -97,6 +104,10 @@ class Mult : public TreeNode {
 public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the multiplication operation.
+     * @return The product of the left and right child nodes.
+     */
     double eval() override {
         return multiplication(left->eval(), right->eval());
     }
@@ -110,6 +121,10 @@ class Div : public TreeNode {
 public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the division operation.
+     * @return The quotient of the left and right child nodes.
+     */
     double eval() override {
         return division(left->eval(), right->eval());
     }
@@ -123,6 +138,10 @@ class Factorial : public TreeNode {
 public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the factorial operation.
+     * @return The factorial of the unary child node.
+     */
     double eval() override {
         return factorial(arg->eval());
     }
@@ -136,6 +155,10 @@ class Exp : public TreeNode {
 public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the exponentiation operation.
+     * @return The result of raising the left child node to the power of the right child node.
+     */
     double eval() override {
         return exponentiation(left->eval(), right->eval());
     }
@@ -149,6 +172,10 @@ class Root : public TreeNode {
 public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the root operation.
+     * @return The nth root of the right child node with respect to the left child node.
+     */
     double eval() override {
         return nthRoot(right->eval(), left->eval());
     }
@@ -162,6 +189,10 @@ class Mod : public TreeNode {
 public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the modulus operation.
+     * @return The remainder of the division of the left child node by the right child node.
+     */
     double eval() override {
         return modulo(left->eval(), right->eval());
     }
@@ -175,6 +206,10 @@ class Abs : public TreeNode {
 public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the absolute value operation.
+     * @return The absolute value of the unary child node.
+     */
     double eval() override {
         return absoluteValue(arg->eval());
     }
@@ -185,9 +220,13 @@ public:
  * @brief Represents negation operation in the expression tree.
  */
 class Neg : public TreeNode {
-public:
+    public:
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
-
+    
+    /**
+     * @brief Evaluates the negation operation.
+     * @return The negated value of the unary child node.
+     */
     double eval() override {
         return -(arg->eval());
     }
@@ -198,26 +237,48 @@ public:
  * @brief Represents an integer value in the expression tree.
  */
 class Integer : public TreeNode {
-protected:
-    
 public:
     double value; ///< The integer value.
 
     using TreeNode::TreeNode; ///< Inherit TreeNode constructors.
 
+    /**
+     * @brief Evaluates the integer node.
+     * @return The value of the integer node.
+     */
     double eval() override {
         return value;
     }
 };
 
+/**
+ * @brief Parses an expression and returns the root of the expression tree.
+ * @return A pointer to the root node of the parsed expression tree.
+ */
 TreeNode* parseExp();
 
+/**
+ * @brief Parses a term and returns the corresponding tree node.
+ * @return A pointer to the tree node representing the parsed term.
+ */
 TreeNode* parseTerm();
 
+/**
+ * @brief Parses a factor and returns the corresponding tree node.
+ * @return A pointer to the tree node representing the parsed factor.
+ */
 TreeNode* parseFactor();
 
+/**
+ * @brief Scans the next token in the input expression.
+ */
 void scanToken();
 
+/**
+ * @brief Parses a mathematical expression and evaluates it.
+ * @param expression The input mathematical expression as a QString.
+ * @return The result of evaluating the expression as a QString.
+ */
 QString parse(QString expression);
 
 /*** End of file parser.h ***/
