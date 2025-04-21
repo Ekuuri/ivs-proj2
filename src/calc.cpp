@@ -4,7 +4,7 @@
  * Last change: 18.4.2025
  * Team: audentes Fortuna iuvat
  * Author: Dan Šrajer
- * Brief: Interactions with the UI
+ * Brief: Implementation of UI interactions
  *****************************************************************/
 /**
 * @file calc.cpp

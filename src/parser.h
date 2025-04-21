@@ -20,13 +20,14 @@
 
 /**
  * @class TreeNode
- * @brief Base class for all nodes in the mathematical expression tree.
+ * @brief Superclass for all nodes in the mathematical expression tree.
  */
 class TreeNode {
 protected:
     TreeNode *left; ///< Pointer to the left child node.
     TreeNode *right; ///< Pointer to the right child node.
     TreeNode *arg; ///< Pointer to the unary operator child node.
+    TreeNode *nextToken; ///< Pointer to the next token in the expression.
 public:
     /**
      * @brief Binary constructor for TreeNode.
@@ -56,6 +57,14 @@ public:
      * @result The result of the evaluation.
      */
     virtual double eval();
+
+    TreeNode parseExp();
+
+    TreeNode parseTerm();
+
+    TreeNode parseFactor();
+
+    TreeNode scanToken();
 };
 
 /**

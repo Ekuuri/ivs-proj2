@@ -4,7 +4,7 @@
 * Last change: 18.4.2025
 * Team: audentes Fortuna iuvat 
 * Author: Tobias Leščenko
-* Brief: Test for test driven development of math library
+* Brief: Header file of UI interactions
 *****************************************************************/
 /**
 * @file calc.h
