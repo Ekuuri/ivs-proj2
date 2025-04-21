@@ -44,10 +44,17 @@ public:
     /**
      * @brief Destructor for TreeNode.
      */
-    ~TreeNode();
+    virtual ~TreeNode();
 
+    /**
+     * @brief Prints the expression represented by the tree node.
+     */
     virtual void print();
 
+    /**
+     * @brief Evaluates the expression represented by the tree node.
+     * @result The result of the evaluation.
+     */
     virtual double eval();
 };
 
