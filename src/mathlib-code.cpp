@@ -66,9 +66,12 @@ double exponentiation(double x, double n) {
 }
 
 double nthRoot(double x, double n) {
-    bool reset = false;
-    if (x < 0 && modulo(n, 2) != 1) {
-        throw std::runtime_error("An error occurred");
+    if (x < 0) {
+        if (modulo(n, 2.0) == 1.0) {
+            return -std::pow(-x, 1.0 / n);
+        } else {
+            throw std::runtime_error("An error occurred");
+        }
     }
     if (n == 0) {
         throw std::runtime_error("An error occurred");
