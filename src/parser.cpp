@@ -74,6 +74,16 @@ TreeNode* parseFactor() {
         scanToken();
         return result;
     }
+    else if (nextToken == '|') {
+        scanToken();
+        auto result = parseExp();
+        if (nextToken != '|') {
+            nextToken = QChar(0);
+            exit(1);
+        }
+        scanToken();
+        return new Abs(result);
+    }
     else if (nextToken == '-') {
         scanToken();
         auto result = parseFactor();
@@ -111,14 +121,15 @@ TreeNode* parseTerm() {
 
 QString parse(QString expression) {
     id = 1; // Reset the index to 1
+
     // Initialize the global variables
     globExp = expression;
     nextToken = expression[0];
     resultTree = parseExp();
 
-    // if (nextToken != QChar(0)) {
-    //     return "Error: Invalid expression";
-    // }
+    if (nextToken != QChar(0)) {
+        return "Error: Invalid expression";
+    }
 
     return QString::number(resultTree->eval());
 }
