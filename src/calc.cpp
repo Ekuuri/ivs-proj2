@@ -26,6 +26,7 @@ Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Calculator) {
     // Setup the user interface from the .ui file.
     ui->setupUi(this);
+    this->setWindowTitle("Calculator");
 
     // Connect number buttons to corresponding slots.
     connect(ui->Button0, &QPushButton::clicked, this, &Calculator::onNumberClicked);
