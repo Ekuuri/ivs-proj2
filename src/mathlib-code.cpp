@@ -9,6 +9,7 @@
 /**
  * @file mathlib-code.cpp
  *
+ * @todo Rewrite errors so they actually tells the user what went wrong.
  * @brief Implementantion of functions from mathlib-code.h
  * @author Marek Furiš
  */
