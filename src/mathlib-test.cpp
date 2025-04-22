@@ -80,6 +80,7 @@ TEST(multiplication, problematicInputs){
     EXPECT_EQ(0, multiplication(45154878, 0));
     EXPECT_EQ(180, multiplication(0.25, 720));
     EXPECT_DOUBLE_EQ(46212.21045256, multiplication(88.5656, 521.7851));
+    EXPECT_EQ(multiplication(1000000, 1000000), 1000000000000);
 }
 
 TEST(division, normalInputs){
