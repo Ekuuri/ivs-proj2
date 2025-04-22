@@ -43,11 +43,11 @@ TEST(ParserTests, EdgeCases) {
 }
 
 TEST(ParserTests, FaultyInputs) {
-    EXPECT_THROW(parse("2++2"), std::runtime_error); // Test invalid operator usage
-    EXPECT_THROW(parse("10/0"), std::runtime_error); // Test division by zero
-    //EXPECT_THROW(parse("QChar(0x221A)(-1)"), std::runtime_error); // Test invalid square root
-    EXPECT_THROW(parse("5**2"), std::runtime_error); // Test invalid operator usage
-    EXPECT_THROW(parse(")2+2("), std::runtime_error); // Test misplaced parentheses
+    EXPECT_EQ(parse("2++2"), "Error: Invalid input"); // Test invalid operator usage
+    EXPECT_EQ(parse("10/0"), "Error: Invalid input"); // Test division by zero
+    //EXPECT_EQ(parse("QChar(0x221A)(-1)"), std::runtime_error); // Test invalid square root
+    EXPECT_EQ(parse("5**2"), "Error: Invalid input"); // Test invalid operator usage
+    EXPECT_EQ(parse(")2+2("), "Error: Invalid input"); // Test misplaced parentheses
 }
 
 TEST(ParserTests, NestedExpressions) {

@@ -94,10 +94,6 @@ TreeNode* parseFactor() {
         auto result = parseFactor();
         return new Neg(result);
     }
-    else if (nextToken == '+') {
-        scanToken();
-        return parseFactor();
-    }
     else if (nextToken == QChar(0x221A)) {
         auto defaultNRoot = new Integer();
         defaultNRoot->value = 2;
