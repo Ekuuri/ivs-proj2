@@ -29,6 +29,9 @@ add_executable(mathlibTest
     mathlib-code.cpp
     mathlib-code.h
     mathlib-test.cpp
+    parser.cpp
+    parser.h
+    parser-test.cpp
 )
 
 # Link Qt

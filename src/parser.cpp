@@ -21,6 +21,10 @@ size_t id = 1;
 QString globExp;
 
 void scanToken() {
+    if (id >= globExp.length()) {
+        nextToken = QChar(0);
+        return;
+    }
     if (nextToken == QChar(0)) {
         return;
     }
@@ -69,7 +73,8 @@ TreeNode* parseFactor() {
         auto result = parseExp();
         if (nextToken != ')') {
             nextToken = QChar(0);
-            exit(1);
+            throw std::runtime_error("Error: Mismatched parentheses");
+            
         }
         scanToken();
         return result;
@@ -79,7 +84,7 @@ TreeNode* parseFactor() {
         auto result = parseExp();
         if (nextToken != '|') {
             nextToken = QChar(0);
-            exit(1);
+            throw std::runtime_error("Error: Mismatched absolute value bars");
         }
         scanToken();
         return new Abs(result);
@@ -90,7 +95,7 @@ TreeNode* parseFactor() {
         return new Neg(result);
     }
     else {
-        exit(1);
+        throw std::runtime_error("Error: Invalid token in parseFactor");
     }
 }
 
