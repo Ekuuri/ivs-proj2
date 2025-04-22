@@ -14,7 +14,7 @@
 * @todo look into the regular expression (QRegularExpression) in onClearClicked likely remake from scratch
 * @todo add absolute value operation and buttons
 * @bug when user clicks out of the display, the user can input anything on the keyboard
-* @bug enter doesnt do equals operation
+* @bug enter doesnt do equals operation DONE
 * @bug calculator window extends more than needed
 */
 
@@ -27,6 +27,13 @@ Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Calculator) {
     // Setup the user interface from the .ui file.
     ui->setupUi(this);
+    this->setWindowTitle("Calculator");
+
+    if (!centralWidget()) {
+        QWidget *cw = new QWidget(this);
+        setCentralWidget(cw);
+        cw->setLayout(new QVBoxLayout);
+    }
 
     // Connect number buttons to corresponding slots.
     connect(ui->Button0, &QPushButton::clicked, this, &Calculator::onNumberClicked);
