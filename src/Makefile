@@ -11,7 +11,7 @@ $(BUILD_DIR)/Makefile:
 	cmake -S .. -B $(BUILD_DIR)
 	
 clean:
-	rm calc-ui.h
+	rm -f calc-ui.h
 	rm -rf $(BUILD_DIR) $(PACK_DIR) html latex
 	
 check:
