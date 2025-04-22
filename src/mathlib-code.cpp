@@ -79,7 +79,7 @@ double modulo(double x, double y) {
     if (y == 0) {
         throw std::runtime_error("An error occurred");
     }
-    return x - y * static_cast<int>(x / y);
+    return fmod(x, y);
 }
 
 double absoluteValue(double x) {
