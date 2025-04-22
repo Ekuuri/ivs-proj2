@@ -69,7 +69,7 @@ double nthRoot(double x, double n) {
         if (modulo(n, 2.0) == 1.0) {
             return -std::pow(-x, 1.0 / n);
         } else {
-            throw std::runtime_error("Error: Cannot compute even root of a negative number");
+            throw std::runtime_error("Error: Not a real number");
         }
     }
     if (n == 0) {
