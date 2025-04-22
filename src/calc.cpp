@@ -13,8 +13,10 @@
 * @author Dan Šrajer
 * @todo look into the regular expression (QRegularExpression) in onClearClicked likely remake from scratch
 * @todo add absolute value operation and buttons
-* @bug when user clicks out of the display, the user can input anything on the keyboard
-* @bug enter doesnt do equals operation DONE
+* @todo change ',' button to '.' button
+* @bug when user clicks on of the display, the user can input anything on the keyboard
+* @bug the '=' button has no keyboard shortcut (should be ENTER)
+* @bug the '0' button has no keyboard shortcut (should be 0)
 * @bug calculator window extends more than needed
 */
 
