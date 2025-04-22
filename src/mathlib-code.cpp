@@ -61,9 +61,7 @@ double exponentiation(double x, double n) {
     if (n < 0) {
         throw std::runtime_error("An error occurred");
     }
-    double result = pow(x, n);
-
-    return result;
+    return pow(x, n);
 }
 
 double nthRoot(double x, double n) {
@@ -71,38 +69,10 @@ double nthRoot(double x, double n) {
     if (x < 0 && modulo(n, 2) != 1) {
         throw std::runtime_error("An error occurred");
     }
-
-    if (x < 0) {
-        x = -x;
-        reset = true;
+    if (n == 0) {
+        throw std::runtime_error("An error occurred");
     }
-    double precision = 0.000000001;
-    double lowerBound = 0;
-    double higherBound = x;
-    double mid;
-    
-    if (x < 1) {
-        higherBound = 1;  // If x is between 0 and 1, set upper bound to 1
-    }
-
-    while (higherBound - lowerBound > precision) {
-        mid = (lowerBound + higherBound) / 2;
-        double midPower = exponentiation(mid, n);
-
-        if (midPower > x) {
-            higherBound = mid;
-        }
-        else {
-            lowerBound = mid;
-        }
-    }
-
-    if (reset) {
-        return -lowerBound;
-    }
-    else {
-        return lowerBound;
-    }
+    return std::pow(x, 1.0 / n);
 }
 
 double modulo(double x, double y) {
