@@ -32,20 +32,20 @@ double multiplication(double x, double y) {
 
 double division(double x, double y) {
     if (y == 0) {
-        throw std::runtime_error("An error has occurred: Division by zero");
+        throw std::runtime_error("Error: Division by zero");
     }
     return x / y;
 }
 
 double factorial(double x) {
     if (x < 0) {
-        throw std::runtime_error("An error has occurred: Factorial of a negative number");
+        throw std::runtime_error("Error: Factorial of a negative number");
     }
     if (x == 0) {
         return 1;
     }
     if (modulo(x, 1.0) != 0.0) {
-        throw std::runtime_error("An error has occurred: Factorial on non-integer number");
+        throw std::runtime_error("Error: Factorial of a non-integer number");
     }
 
     return x * factorial(x - 1);
@@ -53,13 +53,13 @@ double factorial(double x) {
 
 double exponentiation(double x, double n) {
     if (modulo(n, 1.0) != 0.0) {
-        throw std::runtime_error("An error occurred: Only natural exponentiations are allowed");
+        throw std::runtime_error("Error: Not a natural exponent");
     }
     if (n == 0) {
         return 1;
     }
     if (n < 0) {
-        throw std::runtime_error("An error occurred: Only natural exponentiations are allowed");
+        throw std::runtime_error("Error: Not a natural exponent");
     }
     return pow(x, n);
 }
@@ -69,18 +69,18 @@ double nthRoot(double x, double n) {
         if (modulo(n, 2.0) == 1.0) {
             return -std::pow(-x, 1.0 / n);
         } else {
-            throw std::runtime_error("An error occurred: Cannot compute even root of a negative number");
+            throw std::runtime_error("Error: Cannot compute even root of a negative number");
         }
     }
     if (n == 0) {
-        throw std::runtime_error("An error occurred: Cannot compute 0th root");
+        throw std::runtime_error("Error: Cannot compute 0th root");
     }
     return std::pow(x, 1.0 / n);
 }
 
 double modulo(double x, double y) {
     if (y == 0) {
-        throw std::runtime_error("An error occurred: Division by zero");
+        throw std::runtime_error("Error: Division by zero");
     }
     return fmod(x, y);
 }
