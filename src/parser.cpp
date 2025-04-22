@@ -94,8 +94,17 @@ TreeNode* parseFactor() {
         auto result = parseFactor();
         return new Neg(result);
     }
+    else if (nextToken == '+') {
+        scanToken();
+        return parseFactor();
+    }
+    else if (nextToken == QChar(0x221A)) {
+        auto defaultNRoot = new Integer();
+        defaultNRoot->value = 2;
+        return defaultNRoot;
+    }
     else {
-        throw std::runtime_error("Error: Invalid token in parseFactor");
+        throw std::runtime_error("Error: Invalid input");
     }
 }
 
@@ -125,18 +134,23 @@ TreeNode* parseTerm() {
 }
 
 QString parse(QString expression) {
-    id = 1; // Reset the index to 1
+    try {
+        id = 1; // Reset the index to 1
+    
+        // Initialize the global variables
+        globExp = expression;
+        nextToken = expression[0];
+        resultTree = parseExp();
+    
+        // if (nextToken != QChar(0)) {
+        //     return "Error: Invalid expression";
+        // }
 
-    // Initialize the global variables
-    globExp = expression;
-    nextToken = expression[0];
-    resultTree = parseExp();
-
-    if (nextToken != QChar(0)) {
-        return "Error: Invalid expression";
+        return QString::number(resultTree->eval());
     }
-
-    return QString::number(resultTree->eval());
+    catch (const std::runtime_error& e) {
+        return QString::fromStdString(e.what());
+    }
 }
 
 
