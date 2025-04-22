@@ -10,7 +10,6 @@ set(SOURCES
 
 set(HEADERS
     calc.h
-    calc-ui.h
     mathlib-code.h
     parser.h
 )
@@ -19,10 +18,12 @@ set(UIS
     calc.ui
 )
 
+qt6_wrap_ui(UI_HEADERS ${UIS})
+
 add_executable(epicCalculator 
     ${SOURCES}
     ${HEADERS}
-    ${UIS}
+    ${UI_HEADERS}
 )
 
 add_executable(mathlibTest

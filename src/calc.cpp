@@ -21,7 +21,6 @@
 */
 
 #include "calc.h"
-#include "calc-ui.h"  // Generated file from calc.ui
 #include "parser.h"
 
 // Constructor

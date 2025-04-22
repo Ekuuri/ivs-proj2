@@ -7,9 +7,11 @@ all: $(BUILD_DIR)/Makefile
 	
 $(BUILD_DIR)/Makefile:
 	mkdir -p $(BUILD_DIR)
+	uic calc.ui -o calc-ui.h
 	cmake -S .. -B $(BUILD_DIR)
 	
 clean:
+	rm calc-ui.h
 	rm -rf $(BUILD_DIR) $(PACK_DIR) html latex
 	
 check:
