@@ -117,6 +117,13 @@ private slots:
     void onModuloClicked();
 
     /**
+     * @brief Slot to handle absolute value.
+     * 
+     * Appends a straight bracket to the display.
+     */
+    void onAbsoluteValClicked();
+
+    /**
      * @brief Slot to handle decimal point.
      * 
      * Adds a decimal point to the display.
@@ -136,6 +143,20 @@ private slots:
      * Appends a closing bracket to the display.
      */
     void onClBracketClicked();
+
+    /**
+     * @brief Slot to handle left arrow.
+     * 
+     * Moves display cursor to the left.
+     */
+    void onLeftArrClicked();
+
+    /**
+     * @brief Slot to handle right arrow.
+     * 
+     * Moves display cursor to the right.
+     */
+    void onRightArrClicked();
 
     /**
      * @brief Slot to handle equals operation.

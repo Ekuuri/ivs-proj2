@@ -12,11 +12,9 @@
 * @brief Implementation of UI interactions
 * @author Dan Šrajer
 * @todo look into the regular expression (QRegularExpression) in onClearClicked likely remake from scratch
-* @todo add absolute value operation and buttons
-* @todo change ',' button to '.' button
-* @bug when user clicks on of the display, the user can input anything on the keyboard
-* @bug the '=' button has no keyboard shortcut (should be ENTER)
-* @bug the '0' button has no keyboard shortcut (should be 0)
+* @todo smaller text on display
+* @todo highlight cursor location
+* @bug theres no cursor when display is disabled
 * @bug calculator window extends more than needed
 */
 
@@ -28,13 +26,6 @@ Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Calculator) {
     // Setup the user interface from the .ui file.
     ui->setupUi(this);
-    this->setWindowTitle("Calculator");
-
-    if (!centralWidget()) {
-        QWidget *cw = new QWidget(this);
-        setCentralWidget(cw);
-        cw->setLayout(new QVBoxLayout);
-    }
 
     // Connect number buttons to corresponding slots.
     connect(ui->Button0, &QPushButton::clicked, this, &Calculator::onNumberClicked);
@@ -57,6 +48,7 @@ Calculator::Calculator(QWidget *parent)
     connect(ui->ButtonSqrt, &QPushButton::clicked, this, &Calculator::onSqrtClicked);
     connect(ui->ButtonFactorial, &QPushButton::clicked, this, &Calculator::onFactorialClicked);
     connect(ui->ButtonModulo, &QPushButton::clicked, this, &Calculator::onModuloClicked);
+    connect(ui->ButtonAbsoluteVal, &QPushButton::clicked, this, &Calculator::onAbsoluteValClicked);
         
     // Connect additional buttons to corresponding slots.
     connect(ui->ButtonDecPoint, &QPushButton::clicked, this, &Calculator::onDecimalPointClicked);
@@ -66,6 +58,8 @@ Calculator::Calculator(QWidget *parent)
     connect(ui->ButtonPlaceHolder, &QPushButton::clicked, this, &Calculator::onPlaceHolderClicked);
     connect(ui->ButtonDelete, &QPushButton::clicked, this, &Calculator::onDeleteClicked);
     connect(ui->ButtonClear, &QPushButton::clicked, this, &Calculator::onClearClicked);
+    connect(ui->ButtonLeftArr, &QPushButton::clicked, this, &Calculator::onLeftArrClicked);
+    connect(ui->ButtonRightArr, &QPushButton::clicked, this, &Calculator::onRightArrClicked);
 
     //Connect input change event to update clear button.
     connect(ui->Display, &QLineEdit::textChanged, this, &Calculator::onInputChanged);
@@ -116,6 +110,10 @@ void Calculator::onModuloClicked() {
     ui->Display->insert("%");
 }
 
+void Calculator::onAbsoluteValClicked() {
+    ui->Display->insert("|");
+}
+
 void Calculator::onDecimalPointClicked() {
     ui->Display->insert(".");
 }
@@ -126,6 +124,20 @@ void Calculator::onOpBracketClicked() {
 
 void Calculator::onClBracketClicked() {
     ui->Display->insert(")");
+}
+
+void Calculator::onLeftArrClicked() {
+    int pos = ui->Display->cursorPosition();
+    if (pos > 0) {
+        ui->Display->setCursorPosition(pos - 1);
+    }
+}
+
+void Calculator::onRightArrClicked() {
+    int pos = ui->Display->cursorPosition();
+    if (pos < ui->Display->text().length()) {
+        ui->Display->setCursorPosition(pos + 1);
+    }
 }
 
 void Calculator::onEqualsClicked() {
