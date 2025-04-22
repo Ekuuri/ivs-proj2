@@ -38,18 +38,17 @@ double division(double x, double y) {
 }
 
 double factorial(double x) {
-    double y = 1;
     if (x < 0) {
         throw std::runtime_error("An error occurred");
     }
     if (x == 0) {
-        return y;
+        return 1;
     }
     if (modulo(x, 1.0) != 0.0) {
         throw std::runtime_error("An error occurred");
     }
 
-    return y * factorial(y - 1);
+    return x * factorial(x - 1);
 }
 
 double exponentiation(double x, double n) {
@@ -63,7 +62,7 @@ double exponentiation(double x, double n) {
         throw std::runtime_error("An error occurred");
     }
     double result = pow(x, n);
-    
+
     return result;
 }
 
