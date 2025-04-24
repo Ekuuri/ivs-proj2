@@ -19,6 +19,7 @@
 
 #include "calc.h"
 #include "parser.h"
+#include <iostream>
 
 // Constructor
 Calculator::Calculator(QWidget *parent)
@@ -65,6 +66,8 @@ Calculator::Calculator(QWidget *parent)
 
     //Connect input change event to update clear button.
     connect(ui->Display, &QLineEdit::textChanged, this, &Calculator::onInputChanged);
+
+    updateVisualCursor();
 }
 
 // Destructor
@@ -76,74 +79,101 @@ Calculator::~Calculator() {
 void Calculator::onNumberClicked() {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button) {
-        ui->Display->insert(button->text());
+        cursor_id++;
+        QString currentText = ui->Display->text().insert(cursor_id, button->text());
+        ui->Display->setText(currentText);
     }
 }
 
 void Calculator::onAddClicked() {
-    ui->Display->insert("+");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, "+");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onSubtractClicked() {
-    ui->Display->insert("-");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, "-");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onMultiplyClicked() {
-    ui->Display->insert("*");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, "*");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onDivideClicked() {
-    ui->Display->insert("/");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, "/");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onPowerClicked() {
-    ui->Display->insert("^");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, "^");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onSqrtClicked() {
-    ui->Display->insert(QChar(0x221A));
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, QChar(0x221A));
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onFactorialClicked() {
-    ui->Display->insert("!");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, "!");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onModuloClicked() {
-    ui->Display->insert("%");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, "%");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onAbsoluteValClicked() {
-    ui->Display->insert("|");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, "|");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onDecimalPointClicked() {
-    ui->Display->insert(".");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, ".");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onOpBracketClicked() {
-    ui->Display->insert("(");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, "(");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onClBracketClicked() {
-    ui->Display->insert(")");
+    cursor_id++;
+    QString currentText = ui->Display->text().insert(cursor_id, ")");
+    ui->Display->setText(currentText);
 }
 
 void Calculator::onLeftArrClicked() {
-    cursor_id--;
-    if (cursor_id < 0) {
-        cursor_id = 0;
+    if (cursor_id > 0) {
+       cursor_id--;
     }
+    updateVisualCursor();
 }
 
 void Calculator::onRightArrClicked() {
-    cursor_id++;
-    if (cursor_id > ui->Display->text().length()) {
-        cursor_id = ui->Display->text().length();
+    if (cursor_id < ui->Display->text().length()) {
+        cursor_id++;
     }
+    updateVisualCursor();
 }
 
 void Calculator::onEqualsClicked() {
     QString expression = ui->Display->text();
+    expression.replace("|", ""); // Remove any existing cursor symbol
     ui->Display->setText(parse(expression));
     cursor_id = ui->Display->text().length(); // Move cursor to the end after evaluation
 }
@@ -166,9 +196,7 @@ void Calculator::onInputChanged() {
     else {
         ui->ButtonClear->setText("CE");
     }
-    if (!&Calculator::onDeleteClicked) {
-        cursor_id++;
-    }
+    updateVisualCursor();
 }
 
 void Calculator::onClearClicked() {
@@ -187,6 +215,28 @@ void Calculator::onClearClicked() {
         ui->Display->clear();
     }
     ui->ButtonClear->setText("C");
+}
+
+void Calculator::updateVisualCursor() {
+    QString currentText = ui->Display->text();
+
+    // Remove any existing cursor symbol
+    currentText.replace("|", "");
+
+    if (cursor_id < 0) {
+        cursor_id = 0;
+    } 
+    else if (cursor_id > currentText.length()) {
+        cursor_id = currentText.length();
+    }
+
+    std::cout << "Cursor ID: " << cursor_id << std::endl;
+
+    // Insert the cursor symbol at the correct position
+    currentText.insert(cursor_id, "|");
+
+    // Update the display
+    ui->Display->setText(currentText);
 }
 
 /**
