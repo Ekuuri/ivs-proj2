@@ -106,27 +106,31 @@ TreeNode* parseFactor() {
 
 TreeNode* parseTerm() {
     auto result = parseFactor();
-    if (nextToken == '*') {
+    while (true) {
+        if (nextToken == '*') {
         scanToken();
         result = new Mult(result, parseFactor());
+        }
+        else if (nextToken == '/') {
+            scanToken();
+            result = new Div(result, parseFactor());
+        }
+        else if (nextToken == '%') {
+            scanToken();
+            result = new Mod(result, parseFactor());
+        }
+        else if (nextToken == '^') {
+            scanToken();
+            result = new Exp(result, parseTerm());
+        }
+        else if (nextToken == QChar(0x221A)) {
+            scanToken();
+            result = new Root(result, parseTerm());
+        }
+        else {
+            return result;
+        }
     }
-    else if (nextToken == '/') {
-        scanToken();
-        result = new Div(result, parseFactor());
-    }
-    else if (nextToken == '%') {
-        scanToken();
-        result = new Mod(result, parseFactor());
-    }
-    else if (nextToken == '^') {
-        scanToken();
-        result = new Exp(result, parseTerm());
-    }
-    else if (nextToken == QChar(0x221A)) {
-        scanToken();
-        result = new Root(result, parseTerm());
-    }
-    return result;
 }
 
 QString parse(QString expression) {

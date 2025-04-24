@@ -94,4 +94,15 @@ TEST(ParserTests, NthRoot) {
     EXPECT_EQ(parse("3√-27"), "-3"); // Valid cube root of negative number
 }
 
+TEST(ParserTests, CombinedMultiplicationAndDivision) {
+    EXPECT_EQ(parse("6*3/2"), "9"); // Test multiplication followed by division
+    EXPECT_EQ(parse("12/4*3"), "9"); // Test division followed by multiplication
+    EXPECT_EQ(parse("(6*3)/2"), "9"); // Test multiplication and division with parentheses
+    EXPECT_EQ(parse("6*(3/2)"), "9"); // Test division inside parentheses followed by multiplication
+    EXPECT_EQ(parse("12/(4*3)"), "1"); // Test multiplication inside parentheses followed by division
+    EXPECT_EQ(parse("(12/4)*3"), "9"); // Test division inside parentheses followed by multiplication
+    EXPECT_EQ(parse("6*3/2/3"), "3"); // Test multiple divisions after multiplication
+    EXPECT_EQ(parse("6/(3*2)"), "1"); // Test division with multiplication in the denominator
+}
+
 /*** End of file parser-test.cpp ***/
