@@ -20,7 +20,6 @@
 
 #include "calc.h"
 #include "parser.h"
-#include <iostream>
 
 // Constructor
 Calculator::Calculator(QWidget *parent)
@@ -59,7 +58,7 @@ Calculator::Calculator(QWidget *parent)
     connect(ui->ButtonOpBracket, &QPushButton::clicked, this, &Calculator::onOpBracketClicked);
     connect(ui->ButtonClBracket, &QPushButton::clicked, this, &Calculator::onClBracketClicked);
     connect(ui->ButtonEquals, &QPushButton::clicked, this, &Calculator::onEqualsClicked);
-    connect(ui->ButtonPlaceHolder, &QPushButton::clicked, this, &Calculator::onPlaceHolderClicked);
+    // Removed ButtonPlaceHolder connection as it has no functionality.
     connect(ui->ButtonDelete, &QPushButton::clicked, this, &Calculator::onDeleteClicked);
     connect(ui->ButtonClear, &QPushButton::clicked, this, &Calculator::onClearClicked);
     connect(ui->ButtonLeftArr, &QPushButton::clicked, this, &Calculator::onLeftArrClicked);
@@ -124,7 +123,7 @@ void Calculator::onPowerClicked() {
 
 void Calculator::onSqrtClicked() {
     clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, QChar(0x221A));
+    QString currentText = ui->Display->text().insert(cursor_id, "√");
     cursor_id++;
     ui->Display->setText(currentText);
 }
@@ -193,9 +192,7 @@ void Calculator::onEqualsClicked() {
     updateVisualCursor();
 }
 
-void Calculator::onPlaceHolderClicked() {
-    // Placeholder button does nothing.
-}
+// Removed onPlaceHolderClicked as ButtonPlaceHolder is no longer used.
 
 void Calculator::onDeleteClicked() {
     QString currentText = ui->Display->text();
@@ -216,40 +213,53 @@ void Calculator::onInputChanged() {
 
 void Calculator::onClearClicked() {
     if (ui->ButtonClear->text() == "CE") {
-        QString text = ui->Display->text();
-        int lastOp = text.lastIndexOf(QRegularExpression("[+-*/]"));
-
-        if (lastOp != -1) {
-            ui->Display->setText(text.left(lastOp + 1));
-        }
-        else {
-            ui->Display->clear();
-        }
+        clearToLastOperator();
+    } else {
+        clearDisplay();
     }
-    else {
+    resetClearButtonText();
+}
+
+void Calculator::clearToLastOperator() {
+    QString text = ui->Display->text();
+    int lastOp = text.lastIndexOf(QRegularExpression("[+\\-*/%^|]"));
+
+    if (lastOp != -1) {
+        ui->Display->setText(text.left(lastOp + 1));
+    } else {
         ui->Display->clear();
     }
+}
+
+void Calculator::clearDisplay() {
+    ui->Display->clear();
+}
+
+void Calculator::resetClearButtonText() {
     ui->ButtonClear->setText("C");
 }
 
 void Calculator::updateVisualCursor() {
     QString currentText = ui->Display->text();
 
-    // Remove any existing cursor symbol
-    currentText.replace("▏", "");
+    // Check if the cursor position has changed
+    if (!currentText.contains("▏") || currentText.indexOf("▏") != cursor_id) {
+        // Remove any existing cursor symbol
+        currentText.replace("▏", "");
 
-    if (cursor_id < 0) {
-        cursor_id = 0;
-    } 
-    else if (cursor_id > currentText.length()) {
-        cursor_id = currentText.length();
+        if (cursor_id < 0) {
+            cursor_id = 0;
+        } 
+        else if (cursor_id > currentText.length()) {
+            cursor_id = currentText.length();
+        }
+
+        // Insert the cursor symbol at the correct position
+        currentText.insert(cursor_id, "▏");
+
+        // Update the display
+        ui->Display->setText(currentText);
     }
-
-    // Insert the cursor symbol at the correct position
-    currentText.insert(cursor_id, "▏");
-
-    // Update the display
-    ui->Display->setText(currentText);
 }
 
 void Calculator::clearErrorIfNeeded() {

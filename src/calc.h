@@ -168,13 +168,6 @@ private slots:
     void onEqualsClicked();
 
     /**
-     * @brief Slot to handle placeholder button click.
-     * 
-     * Does nothing (used to fill space in the UI).
-     */
-    void onPlaceHolderClicked();
-
-    /**
      * @brief Slot to handle delete/backspace operation.
      * 
      * Removes the last character from the display.
@@ -195,6 +188,31 @@ private slots:
      * C clears the whole display.
      */
     void onClearClicked();
+
+    /**
+     * @brief Clears the display up to the last operator.
+     *
+     * This function removes all characters from the display after the last operator,
+     * allowing the user to quickly clear the most recent input or operand while preserving
+     * the previous part of the expression.
+     */
+    void clearToLastOperator();
+
+    /**
+     * @brief Clears the entire display.
+     *
+     * This function removes all content from the display, resetting it to an empty state.
+     * It is typically used when the user wants to start a new calculation from scratch.
+     */
+    void clearDisplay();
+
+    /**
+     * @brief Resets the clear button text.
+     *
+     * This function updates the clear button's label (e.g., from "CE" to "C" or vice versa)
+     * based on the current state of the display, providing appropriate feedback to the user.
+     */
+    void resetClearButtonText();
 
     /**
      * @brief Updates the visual representation of the cursor on the screen.
