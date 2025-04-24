@@ -14,8 +14,7 @@
 * @author Tobias Leščenko
 * @author Marek Furiš
 *
-* @todo remake onClearClicked()
-* @bug there are a lot of redundant calls of updateVisualCursor() and clearErrorIfNeeded()
+* @bug when cursor is at the beginning it removes as if it was at the end
 */
 
 #include "calc.h"
@@ -87,106 +86,70 @@ void Calculator::onNumberClicked() {
 }
 
 void Calculator::onAddClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "+");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("+");
 }
 
 void Calculator::onSubtractClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "-");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("-");
 }
 
 void Calculator::onMultiplyClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "*");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("*");
 }
 
 void Calculator::onDivideClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "/");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("/");
 }
 
 void Calculator::onPowerClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "^");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("^");
 }
 
 void Calculator::onSqrtClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "√");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("√");
 }
 
 void Calculator::onFactorialClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "!");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("!");
 }
 
 void Calculator::onModuloClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "%");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("%");
 }
 
 void Calculator::onAbsoluteValClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "|");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("|");
 }
 
 void Calculator::onDecimalPointClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, ".");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor(".");
 }
 
 void Calculator::onOpBracketClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, "(");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor("(");
 }
 
 void Calculator::onClBracketClicked() {
-    clearErrorIfNeeded();
-    QString currentText = ui->Display->text().insert(cursor_id, ")");
-    cursor_id++;
-    ui->Display->setText(currentText);
+    insertSymbolAtCursor(")");
 }
 
 void Calculator::onLeftArrClicked() {
     if (cursor_id > 0) {
        cursor_id--;
+       updateVisualCursor();
     }
-    updateVisualCursor();
 }
 
 void Calculator::onRightArrClicked() {
     if (cursor_id < ui->Display->text().length()) {
         cursor_id++;
+        updateVisualCursor();
     }
-    updateVisualCursor();
 }
 
 void Calculator::onEqualsClicked() {
     QString expression = ui->Display->text();
-    expression.replace("▏", ""); // Remove any existing cursor symbol
+    expression.remove("▏"); // Remove any existing cursor symbol
     ui->Display->setText(parse(expression));
     cursor_id = ui->Display->text().length(); // Move cursor to the end after evaluation
     updateVisualCursor();
@@ -267,6 +230,13 @@ void Calculator::clearErrorIfNeeded() {
         ui->Display->clear();
         cursor_id = 0;
     }
+}
+
+void Calculator::insertSymbolAtCursor(const QString& symbol) {
+    clearErrorIfNeeded();
+    QString currentText = ui->Display->text().insert(cursor_id, symbol);
+    cursor_id++;
+    ui->Display->setText(currentText);
 }
 
 /**
