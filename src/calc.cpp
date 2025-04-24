@@ -131,15 +131,15 @@ void Calculator::onClBracketClicked() {
 
 void Calculator::onLeftArrClicked() {
     cursor_id--;
-    if (cursor_id < ui->Display->text().begin()) {
-        cursor_id = ui->Display->text().begin();
+    if (cursor_id < 0) {
+        cursor_id = 0;
     }
 }
 
 void Calculator::onRightArrClicked() {
     cursor_id++;
-    if (cursor_id > ui->Display->text().end()) {
-        cursor_id = ui->Display->text().end();
+    if (cursor_id > ui->Display->text().length()) {
+        cursor_id = ui->Display->text().length();
     }
 }
 
@@ -154,7 +154,8 @@ void Calculator::onPlaceHolderClicked() {
 
 void Calculator::onDeleteClicked() {
     QString currentText = ui->Display->text();
-    currentText.erase(cursor_id, cursor_id);  // Remove the last character
+    currentText.remove(cursor_id - 1, 1);
+    onLeftArrClicked(); // Move cursor left after deletion
     ui->Display->setText(currentText);
 }
 
