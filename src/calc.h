@@ -205,6 +205,13 @@ private slots:
      */
     void updateVisualCursor();
 
+    /**
+     * @brief Clears any existing error state if one is present.
+     *
+     * This function checks for the presence of an error state and clears it
+     * if necessary. It ensures that the system is in a clean state for further
+     * operations.
+     */
     void clearErrorIfNeeded();
 
 private:

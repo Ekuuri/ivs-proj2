@@ -1,3 +1,11 @@
+# ******************************************************************
+# Project name: IVS 2 project
+# Date: 17.4.2025
+# Last change: 24.4.2025
+# Team: audentes Fortuna iuvat
+# Author: Tobias Leščenko
+# ******************************************************************
+
 BUILD_DIR = ../build
 PACK_DIR = ../xlescet00_xjedliv01_xfurism00_xsrajed00
 ZIPFILE = $(PACK_DIR).zip

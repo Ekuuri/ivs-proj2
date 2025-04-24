@@ -12,6 +12,7 @@
 * @brief Implementation of mathematical formula parsing
 * @author Tobias Leščenko
 * @author Marek Furiš
+*
 * @bug When entering parentheses after a number, eval ignores parentheses and returns the number
 */
 

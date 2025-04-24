@@ -3,7 +3,7 @@
  * Date: 26.3.2025
  * Last change: 23.4.2025
  * Team: audentes Fortuna iuvat
- * Author: Dan Šrajer
+ * Author: Dan Šrajer, Tobias Leščenko, Marek Furiš
  * Brief: Implementation of UI interactions
  *****************************************************************/
 /**
@@ -11,10 +11,11 @@
 *
 * @brief Implementation of UI interactions
 * @author Dan Šrajer
-* @todo look into the regular expression (QRegularExpression) in onClearClicked likely remake from scratch
-* @todo highlight cursor location
-* @bug theres no cursor when display is disabled
-* @bug calculator window extends more than needed
+* @author Tobias Leščenko
+* @author Marek Furiš
+*
+* @todo remake onClearClicked()
+* @bug there are a lot of redundant calls of updateVisualCursor() and clearErrorIfNeeded()
 */
 
 #include "calc.h"
