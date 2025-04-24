@@ -35,7 +35,7 @@ class Calculator : public QMainWindow {
 
 public:
     int cursor_id = 0; ///< Cursor position in the display 
-    
+
     /**
      * @brief Constructor for the Calculator class.
      *
@@ -196,6 +196,13 @@ private slots:
      */
     void onClearClicked();
 
+    /**
+     * @brief Updates the visual representation of the cursor on the screen.
+     * 
+     * This function is responsible for synchronizing the visual cursor's position
+     * with the logical cursor's state, ensuring that the user interface reflects
+     * the current cursor location accurately.
+     */
     void updateVisualCursor();
 
 private:
