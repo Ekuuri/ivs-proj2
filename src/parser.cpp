@@ -3,7 +3,7 @@
 * Date: 21.4.2025
 * Last change: 21.4.2025
 * Team: audentes Fortuna iuvat 
-* Author: Tobias Leščenko
+* Author: Tobias Leščenko, Marek Furiš
 * Brief: Implementation of mathematical formula parsing
 *****************************************************************/
 /**
@@ -11,6 +11,8 @@
 *
 * @brief Implementation of mathematical formula parsing
 * @author Tobias Leščenko
+* @author Marek Furiš
+* @bug When entering parentheses after a number, eval ignores parentheses and returns the number
 */
 
 #include "parser.h"
