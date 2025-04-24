@@ -185,7 +185,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
       <item row="0" column="0" colspan="5">
        <widget class="QLineEdit" name="Display">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -207,7 +207,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="readOnly">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -311,7 +311,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
       <item row="1" column="4">
        <widget class="QPushButton" name="ButtonAbsoluteVal">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -321,12 +321,6 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
         <property name="autoFillBackground">
          <bool>false</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">#buttonPlaceholder {
-    background-color: #3B4252; 
-    border: none;
-}</string>
         </property>
         <property name="text">
          <string>|n|</string>
