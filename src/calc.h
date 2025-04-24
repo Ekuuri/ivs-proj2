@@ -232,6 +232,16 @@ private slots:
      */
     void clearErrorIfNeeded();
 
+    /**
+     * @brief Inserts a symbol at the current cursor position in the display.
+     *
+     * This function inserts the specified symbol into the display at the current
+     * cursor position, updates the cursor position accordingly, and refreshes the
+     * visual cursor. It is used for inserting operators, brackets, or other special
+     * symbols as part of the user's input.
+     *
+     * @param symbol The symbol to insert at the cursor position.
+     */
     void insertSymbolAtCursor(const QString& symbol);
 
 private:
