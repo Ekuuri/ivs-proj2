@@ -68,6 +68,11 @@ TreeNode* parseFactor() {
         if (nextToken == '!') {
             return new Factorial(result);
         }
+
+        // Check for implicit multiplication (e.g., 2(3)), which is not supported
+        if (nextToken == '(' || nextToken == '|') {
+            throw std::runtime_error("Error: Invalid input");
+        }
         
         return result;
     }
