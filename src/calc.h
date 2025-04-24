@@ -20,7 +20,7 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QRegularExpression>
-#include "calc-ui.h"  // Generated file from calc.ui
+#include "../build/src/ui_calc.h"  // Generated file from calc.ui
 
 /**
  * @class Calculator

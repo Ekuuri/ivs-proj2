@@ -7,7 +7,6 @@ all: $(BUILD_DIR)/Makefile
 	
 $(BUILD_DIR)/Makefile:
 	mkdir -p $(BUILD_DIR)
-	uic calc.ui -o calc-ui.h
 	cmake -S .. -B $(BUILD_DIR)
 	
 clean:
