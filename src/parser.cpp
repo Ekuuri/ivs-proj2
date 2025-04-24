@@ -144,12 +144,17 @@ QString parse(QString expression) {
         globExp = expression;
         nextToken = expression[0];
         resultTree = parseExp();
+        QString result;
     
-        // if (nextToken != QChar(0)) {
-        //     return "Error: Invalid expression";
-        // }
+        if (resultTree) {
+            result = QString::number(resultTree->eval());
+            delete resultTree;
+        }
+        else {
+            result = "Error: Invalid input";
+        }
 
-        return QString::number(resultTree->eval());
+        return result;
     }
     catch (const std::runtime_error& e) {
         return QString::fromStdString(e.what());
