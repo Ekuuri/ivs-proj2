@@ -76,7 +76,6 @@ Calculator::~Calculator() {
 void Calculator::onNumberClicked() {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button) {
-        cursor_id++;
         ui->Display->insert(button->text());
     }
 }
@@ -166,6 +165,9 @@ void Calculator::onInputChanged() {
     } 
     else {
         ui->ButtonClear->setText("CE");
+    }
+    if (!&Calculator::onDeleteClicked) {
+        cursor_id++;
     }
 }
 
