@@ -14,7 +14,6 @@
 * @author Tobias Leščenko
 * @author Marek Furiš
 *
-* @bug when cursor is at the beginning it removes as if it was at the end
 */
 
 #include "calc.h"
@@ -158,10 +157,12 @@ void Calculator::onEqualsClicked() {
 // Removed onPlaceHolderClicked as ButtonPlaceHolder is no longer used.
 
 void Calculator::onDeleteClicked() {
-    QString currentText = ui->Display->text();
-    currentText.remove(cursor_id - 1, 1);
-    onLeftArrClicked(); // Move cursor left after deletion
-    ui->Display->setText(currentText);
+    if (cursor_id > 0) {
+        QString currentText = ui->Display->text();
+        currentText.remove(cursor_id - 1, 1);
+        onLeftArrClicked(); // Move cursor left after deletion
+        ui->Display->setText(currentText);
+    }  
 }
 
 void Calculator::onInputChanged() {
