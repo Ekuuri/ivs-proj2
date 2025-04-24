@@ -34,6 +34,7 @@ class Calculator : public QMainWindow {
     Q_OBJECT
 
 public:
+    QString::const_iterator cursor_id = ui->Display->text().end(); ///< Cursor position in the display 
     /**
      * @brief Constructor for the Calculator class.
      *

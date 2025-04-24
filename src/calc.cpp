@@ -76,6 +76,7 @@ Calculator::~Calculator() {
 void Calculator::onNumberClicked() {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button) {
+        cursor_id++;
         ui->Display->insert(button->text());
     }
 }
@@ -129,16 +130,16 @@ void Calculator::onClBracketClicked() {
 }
 
 void Calculator::onLeftArrClicked() {
-    int pos = ui->Display->cursorPosition();
-    if (pos > 0) {
-        ui->Display->setCursorPosition(pos - 1);
+    cursor_id--;
+    if (cursor_id < ui->Display->text().begin()) {
+        cursor_id = ui->Display->text().begin();
     }
 }
 
 void Calculator::onRightArrClicked() {
-    int pos = ui->Display->cursorPosition();
-    if (pos < ui->Display->text().length()) {
-        ui->Display->setCursorPosition(pos + 1);
+    cursor_id++;
+    if (cursor_id > ui->Display->text().end()) {
+        cursor_id = ui->Display->text().end();
     }
 }
 
@@ -153,7 +154,7 @@ void Calculator::onPlaceHolderClicked() {
 
 void Calculator::onDeleteClicked() {
     QString currentText = ui->Display->text();
-    currentText.chop(1);  // Remove the last character
+    currentText.erase(cursor_id, cursor_id);  // Remove the last character
     ui->Display->setText(currentText);
 }
 
