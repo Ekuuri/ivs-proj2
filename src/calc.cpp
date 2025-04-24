@@ -186,7 +186,7 @@ void Calculator::onRightArrClicked() {
 
 void Calculator::onEqualsClicked() {
     QString expression = ui->Display->text();
-    expression.replace("|", ""); // Remove any existing cursor symbol
+    expression.replace("▏", ""); // Remove any existing cursor symbol
     ui->Display->setText(parse(expression));
     cursor_id = ui->Display->text().length(); // Move cursor to the end after evaluation
     updateVisualCursor();
@@ -235,7 +235,7 @@ void Calculator::updateVisualCursor() {
     QString currentText = ui->Display->text();
 
     // Remove any existing cursor symbol
-    currentText.replace("|", "");
+    currentText.replace("▏", "");
 
     if (cursor_id < 0) {
         cursor_id = 0;
@@ -244,10 +244,8 @@ void Calculator::updateVisualCursor() {
         cursor_id = currentText.length();
     }
 
-    std::cout << "Cursor ID: " << cursor_id << std::endl;
-
     // Insert the cursor symbol at the correct position
-    currentText.insert(cursor_id, "|");
+    currentText.insert(cursor_id, "▏");
 
     // Update the display
     ui->Display->setText(currentText);
