@@ -146,6 +146,7 @@ void Calculator::onRightArrClicked() {
 void Calculator::onEqualsClicked() {
     QString expression = ui->Display->text();
     ui->Display->setText(parse(expression));
+    cursor_id = ui->Display->text().length(); // Move cursor to the end after evaluation
 }
 
 void Calculator::onPlaceHolderClicked() {
