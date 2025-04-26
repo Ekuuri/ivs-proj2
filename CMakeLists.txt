@@ -48,3 +48,34 @@ endif()
 include_directories(${GTEST_DIR}/googletest/include)
 
 add_subdirectory(src)
+
+#Cpack configuration for installer
+#Informations about package
+set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
+set(CPACK_PACKAGE_CONTACT "xjedliv01@stud.fit.vut.cz")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Calculator installer")
+set(CPACK_PACKAGE_VERSION "1.0.0")
+
+#Generator set
+set(CPACK_GENERATOR DEB)
+install(TARGETS epicCalculator
+        RUNTIME DESTINATION /opt/${PROJECT_NAME})
+install(FILES installer/${PROJECT_NAME}.desktop
+DESTINATION /usr/share/applications)
+set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA
+    "${CMAKE_CURRENT_SOURCE_DIR}/installer/postinst"
+    "${CMAKE_CURRENT_SOURCE_DIR}/installer/prerm"
+)
+
+#Icon
+install(FILES
+    ${CMAKE_SOURCE_DIR}/icon/epic_calculator.xpm
+    DESTINATION /usr/share/pixmaps
+)
+#Dependencies
+set(CPACK_DEBIAN_PACKAGE_DEPENDS
+    "libc6 (>= 2.34), libstdc++6 (>= 13), \
+     libqt6core6 (>= 6.2), libqt6gui6 (>= 6.2), libqt6widgets6 (>= 6.2)"
+)
+
+include(CPack)
