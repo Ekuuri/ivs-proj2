@@ -4,7 +4,7 @@ project(epicCalculator)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_PREFIX_PATH "/home/ivs/Qt/6.8.2/gcc_64" ${CMAKE_PREFIX_PATH})
+#set(CMAKE_PREFIX_PATH "/home/ivs/Qt/6.8.2/gcc_64" ${CMAKE_PREFIX_PATH})
 
 find_package(Qt6 COMPONENTS Core Gui Widgets)
 if (Qt6_FOUND)
@@ -39,6 +39,7 @@ if(NOT DIR_CONTENT)
   )
 endif()
 
+set(INSTALL_GTEST OFF CACHE BOOL "Disable Googletest install" FORCE)
 if(BUILD_GMOCK)
   add_subdirectory(${GTEST_DIR}/googlemock googletest_build)
 else()
@@ -62,9 +63,12 @@ install(TARGETS epicCalculator
         RUNTIME DESTINATION /opt/${PROJECT_NAME})
 install(FILES installer/${PROJECT_NAME}.desktop
 DESTINATION /usr/share/applications)
+install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
+        DESTINATION /usr/share/doc/${PROJECT_NAME}
+        RENAME copyright)
 set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA
     "${CMAKE_CURRENT_SOURCE_DIR}/installer/postinst"
-    "${CMAKE_CURRENT_SOURCE_DIR}/installer/prerm"
+    "${CMAKE_CURRENT_SOURCE_DIR}/installer/prerun"
 )
 
 #Icon

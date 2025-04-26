@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Exec=/opt/Calculator_Audentes_Fortuna_Iuvat/Calculator_Audentes_Fortuna_Iuvat
-Path=/opt/Calculator_Audentes_Fortuna_Iuvat
-Name=Calculator_Audentes_Fortuna_Iuvat
+Exec=/opt/epicCalculator/epicCalculator
+Path=/opt/epicCalculator
+Name=epicCalculator
 Icon=epic_calculator
-Terminal=true
-Categories=Utility;Application;
+Terminal=false
+Categories=Utility;
