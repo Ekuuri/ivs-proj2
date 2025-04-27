@@ -17,6 +17,13 @@
 #include <iostream>
 #include "mathlib-code.h"
 
+/**************************************
+ * @brief Main function, gets input from stdin and computes defined equation and prints result
+ * 
+ * 
+ * @return 0 on success
+ */
+
 int main() {
 	float count = 0.0; // Number of elements
 	float number; // Input number
