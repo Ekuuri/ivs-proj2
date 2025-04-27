@@ -13,7 +13,8 @@
 * @author Tobias Leščenko
 * @author Marek Furiš
 *
-* @bug When entering parentheses after a number, eval ignores parentheses and returns the number
+* @warning no ability to work with numbers in scientific notation
+* @bug absolute value doesn't work
 */
 
 #include "parser.h"

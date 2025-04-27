@@ -14,6 +14,7 @@
 * @author Tobias Leščenko
 * @author Marek Furiš
 *
+* @bug numbers in scientific notation cannot be 'CEd'
 */
 
 #include "calc.h"
