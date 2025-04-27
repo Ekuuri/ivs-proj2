@@ -1,7 +1,7 @@
 /******************************************************************
  * Project name: IVS 2 project
  * Date: 1.4.2025
- * Last change: 18.4.2025
+ * Last change: 27.4.2025
  * Team: audentes Fortuna iuvat
  * Author: Marek Furiš
  * Brief: Profiling implementation
@@ -17,10 +17,10 @@
 #include "mathlib-code.h"
 
 int main() {
-	float count = 0.0;
-	float number;
-	float sum = 0.0;
-	float sumSquared = 0.0;
+	float count = 0.0; // Number of elements
+	float number; // Input number
+	float sum = 0.0; // Sum of input numbers
+	float sumSquared = 0.0; // Sum of squares of input numbers
     while (std::cin >> number) {
         sum += number;
 		//sum = addition(sum, number);
@@ -30,7 +30,8 @@ int main() {
     }
 
 	float x_ = multiplication(division(1, count), sum);
-	float s = nthRoot(multiplication(division(1, subtraction(count, 1)), subtraction(sumSquared, multiplication(count, exponentiation(x_, 2)))), 2);
+	float s = nthRoot(multiplication(division(1, subtraction(count, 1)),
+					  subtraction(sumSquared, multiplication(count, exponentiation(x_, 2)))), 2);
 
 	std::cout << s << std::endl;
 
