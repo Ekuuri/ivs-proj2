@@ -22,10 +22,10 @@ int main() {
 	float sum = 0.0; // Sum of input numbers
 	float sumSquared = 0.0; // Sum of squares of input numbers
     while (std::cin >> number) {
-        sum += number;
-		//sum = addition(sum, number);
-		sumSquared += exponentiation(number, 2);
-		//sumSquared = addition(sumSquared, exponentiation(number, 2));
+        // sum += number;
+		sum = addition(sum, number);
+		// sumSquared += exponentiation(number, 2);
+		sumSquared = addition(sumSquared, exponentiation(number, 2));
 		count++;
     }
 
