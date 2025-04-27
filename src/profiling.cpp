@@ -11,6 +11,7 @@
  *
  * @brief Profiling implementation
  * @author Marek Furiš
+ * @todo comment for main
  */
 
 #include <iostream>
