@@ -1,0 +1,42 @@
+/* XPM /
+static charprofiling_xpm[] = {
+/* width height num_colors chars_per_pixel /
+"32 32 2 1",
+/ colors /
+"b c #005BBB",
+"w c white",
+/ pixels */
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbwwwwwwbbbbbbbbb",
+"bbbbbbbbbbbbbbbbwwwwwwwwbbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwffffffwwbbbbbbb",
+"bbbbbbbbbbbbbbbbwwwwwwwwbbbbbbbb",
+"bbbbbbbbbbbbbbbbbwwwwwwbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+};
