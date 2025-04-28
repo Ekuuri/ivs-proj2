@@ -1,0 +1,3 @@
+#!/bin/bash
+rm /usr/share/applications/epicCalculator.desktop
+exit 0

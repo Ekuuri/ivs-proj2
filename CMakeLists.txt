@@ -4,7 +4,7 @@ project(epicCalculator)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_PREFIX_PATH "/home/ivs/Qt/6.8.2/gcc_64" ${CMAKE_PREFIX_PATH})
+#set(CMAKE_PREFIX_PATH "/home/ivs/Qt/6.8.2/gcc_64" ${CMAKE_PREFIX_PATH})
 
 find_package(Qt6 COMPONENTS Core Gui Widgets)
 if (Qt6_FOUND)
@@ -39,6 +39,7 @@ if(NOT DIR_CONTENT)
   )
 endif()
 
+set(INSTALL_GTEST OFF CACHE BOOL "Disable Googletest install" FORCE)
 if(BUILD_GMOCK)
   add_subdirectory(${GTEST_DIR}/googlemock googletest_build)
 else()
@@ -48,3 +49,37 @@ endif()
 include_directories(${GTEST_DIR}/googletest/include)
 
 add_subdirectory(src)
+
+#Cpack configuration for installer
+#Informations about package
+set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
+set(CPACK_PACKAGE_CONTACT "xjedliv01@stud.fit.vut.cz")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Calculator installer")
+set(CPACK_PACKAGE_VERSION "1.0.0")
+
+#Generator set
+set(CPACK_GENERATOR DEB)
+install(TARGETS epicCalculator
+        RUNTIME DESTINATION /opt/${PROJECT_NAME})
+install(FILES src/installer/${PROJECT_NAME}.desktop
+DESTINATION /usr/share/applications)
+install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
+        DESTINATION /usr/share/doc/${PROJECT_NAME}
+        RENAME copyright)
+set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/postinst"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/prerun"
+)
+
+#Icon
+install(FILES
+    ${CMAKE_SOURCE_DIR}/src/icon/epic_calculator.xpm
+    DESTINATION /usr/share/pixmaps
+)
+#Dependencies
+set(CPACK_DEBIAN_PACKAGE_DEPENDS
+    "libc6 (>= 2.34), libstdc++6 (>= 13), \
+     libqt6core6 (>= 6.2), libqt6gui6 (>= 6.2), libqt6widgets6 (>= 6.2)"
+)
+
+include(CPack)
