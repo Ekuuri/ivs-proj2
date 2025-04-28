@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=/opt/epicCalculator/epicCalculator
+Path=/opt/epicCalculator
+Name=epicCalculator
+Icon=epic_calculator
+Terminal=false
+Categories=Utility;

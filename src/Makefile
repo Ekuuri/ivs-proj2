@@ -50,7 +50,11 @@ pack: check doc all
 	
 	# todo: installers
 	mkdir -p $(PACK_DIR)/install
-	
+	cmake -G "Unix Makefiles" -S .. -B $(PACK_DIR)/install
+	cd $(PACK_DIR)/install && cmake --build . --target package
+	cd $(PACK_DIR)/install/_CPack_Packages/ && rm -fr *
+	cd $(PACK_DIR)/install && find . ! -name epicCalculator*.deb -delete
+
 	echo "Zipping package into $(PACK_DIR)/$(ZIPFILE)..."
 	cd $(PACK_DIR) && zip -r $(notdir $(ZIPFILE)) .
 	cd $(PACK_DIR) && find . ! -name $(notdir $(ZIPFILE)) -delete

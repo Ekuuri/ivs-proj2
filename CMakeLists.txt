@@ -61,19 +61,19 @@ set(CPACK_PACKAGE_VERSION "1.0.0")
 set(CPACK_GENERATOR DEB)
 install(TARGETS epicCalculator
         RUNTIME DESTINATION /opt/${PROJECT_NAME})
-install(FILES installer/${PROJECT_NAME}.desktop
+install(FILES src/installer/${PROJECT_NAME}.desktop
 DESTINATION /usr/share/applications)
 install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
         DESTINATION /usr/share/doc/${PROJECT_NAME}
         RENAME copyright)
 set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA
-    "${CMAKE_CURRENT_SOURCE_DIR}/installer/postinst"
-    "${CMAKE_CURRENT_SOURCE_DIR}/installer/prerun"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/postinst"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/prerun"
 )
 
 #Icon
 install(FILES
-    ${CMAKE_SOURCE_DIR}/icon/epic_calculator.xpm
+    ${CMAKE_SOURCE_DIR}/src/icon/epic_calculator.xpm
     DESTINATION /usr/share/pixmaps
 )
 #Dependencies
