@@ -1,3 +1,0 @@
-#!/bin/bash
-chmod +x /opt/epicCalculator/epicCalculator
-desktop-file-install /usr/share/applications/epicCalculator.desktop
