@@ -1,3 +1,0 @@
-#!/bin/bash
-chmod +x /opt/stddev/stddev
-desktop-file-install /usr/share/applications/stddev.desktop

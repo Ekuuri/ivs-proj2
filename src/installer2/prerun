@@ -1,3 +1,0 @@
-#!/bin/bash
-rm /usr/share/applications/stddev.desktop
-exit 0

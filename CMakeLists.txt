@@ -50,7 +50,7 @@ include_directories(${GTEST_DIR}/googletest/include)
 
 add_subdirectory(src)
 
-#Cpack configuration for Calculator installer
+#Cpack configuration for Calculator and Profiling installer
 #Informations about package
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
 set(CPACK_PACKAGE_CONTACT "xjedliv01@stud.fit.vut.cz")
@@ -100,28 +100,14 @@ cpack_add_component(EpicCalc
 )
 
 #Cpack configuration for Profiling installer
-install(TARGETS profiling
-        RUNTIME DESTINATION /opt/stddev
+install(TARGETS stddev
+        RUNTIME DESTINATION /usr/bin
         COMPONENT stddev)
 
-install(FILES src/installer2/stddev.desktop
-        DESTINATION /usr/share/applications
-                        COMPONENT stddev)
 install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
         DESTINATION /usr/share/doc/${PROJECT_NAME}-stddev
                          RENAME copyright
                         COMPONENT stddev)   
-
-set(CPACK_DEBIAN_stddev_PACKAGE_CONTROL_EXTRA
-"${CMAKE_CURRENT_SOURCE_DIR}/src/installer2/postinst"
-"${CMAKE_CURRENT_SOURCE_DIR}/src/installer2/prerun")
-
-
-#Icon
-install(FILES
-    ${CMAKE_SOURCE_DIR}/src/icon/stddev.xpm
-              DESTINATION /usr/share/pixmaps
-                            COMPONENT stddev)
 cpack_add_component(stddev
 DISPLAY_NAME "Stddev profiling Tool"
 DESCRIPTION  "Stddev profiling installer"

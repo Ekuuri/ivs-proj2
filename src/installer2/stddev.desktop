@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Exec=/opt/stddev/profiling
-Path=/opt/stddev
-Name=stddev
-Icon=stddev
-Terminal=false
-Categories=Utility;
