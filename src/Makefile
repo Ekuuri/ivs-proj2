@@ -19,8 +19,7 @@ $(BUILD_DIR)/Makefile:
 	cmake -S .. -B $(BUILD_DIR)
 	
 clean:
-	rm -f calc-ui.h
-	rm -rf $(BUILD_DIR) $(PACK_DIR) html latex
+	rm -rf $(BUILD_DIR) $(PACK_DIR) doxygen
 
 doc:
 	doxygen Doxyfile
@@ -32,8 +31,7 @@ pack: doc all
 	git clone .. $(PACK_DIR)/repo
 	
 	mkdir -p $(PACK_DIR)/doc
-	cp -fr html $(PACK_DIR)/doc
-	cp -fr latex $(PACK_DIR)/doc
+	cp -fr doxygen/* $(PACK_DIR)/doc
 	
 	mkdir -p $(PACK_DIR)/install
 	cmake -G "Unix Makefiles" -S .. -B $(PACK_DIR)/install
