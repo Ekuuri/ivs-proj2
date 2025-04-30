@@ -18,6 +18,12 @@ set(UIS
     calc.ui
 )
 
+set(QTlib
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Widgets
+)
+
 qt6_wrap_ui(UI_HEADERS ${UIS})
 
 add_executable(epicCalculator 
@@ -35,7 +41,7 @@ add_executable(mathlibTest
     parser-test.cpp
 )
 
-add_executable(profiling
+add_executable(stddev
     profiling.cpp
     mathlib-code.h
     mathlib-code.cpp
@@ -43,15 +49,11 @@ add_executable(profiling
 
 # Link Qt
 target_link_libraries(epicCalculator
-    Qt6::Core
-    Qt6::Gui
-    Qt6::Widgets
+    ${QTlib}
 )
 
 target_link_libraries(mathlibTest
     gtest
     gtest_main
-    Qt6::Core
-    Qt6::Gui
-    Qt6::Widgets
+    ${QTlib}
 )

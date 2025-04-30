@@ -12,6 +12,7 @@ ZIPFILE = $(PACK_DIR).zip
 
 all: $(BUILD_DIR)/Makefile
 	$(MAKE) -C $(BUILD_DIR)
+#cmake --install $(BUILD_DIR) --component epicCalc
 	
 $(BUILD_DIR)/Makefile:
 	mkdir -p $(BUILD_DIR)
@@ -20,26 +21,11 @@ $(BUILD_DIR)/Makefile:
 clean:
 	rm -f calc-ui.h
 	rm -rf $(BUILD_DIR) $(PACK_DIR) html latex
-	
-check:
-	echo "Checking for required project files..."
-	for file in \
-		../dokumentace.pdf \
-		../screenshot.png \
-		../skutecnost.txt \
-		../hodnoceni.txt \
-		../src/* \
-		../mockup/* \
-		../plan/* \
-		../profiling/*; do \
-		if [ ! -e $$file ]; then echo "*** Missing: $$file"; exit 1; fi; \
-		done
-	echo "All required files are present."
 
 doc:
 	doxygen Doxyfile
 	
-pack: check doc all
+pack: doc all
 	echo "Creating package directory $(PACK_DIR)..."
 	rm -rf $(PACK_DIR)
 	mkdir -p $(PACK_DIR)/repo
@@ -67,7 +53,11 @@ test: all
 	
 run: all
 	./$(BUILD_DIR)/src/epicCalculator
+
+stddev: $(BUILD_DIR)/Makefile
+	cmake --build $(BUILD_DIR) --target stddev
+#cmake --install $(BUILD_DIR) --component stddev
 	
-.PHONY: all clean check doc pack test run
+.PHONY: all clean doc pack test run stddev
 	
 
