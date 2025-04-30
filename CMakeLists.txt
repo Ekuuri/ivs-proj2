@@ -112,19 +112,19 @@ cpack_add_component(EpicCalc
 # ----------------------------------------------------------
 #Cpack configuration for Profiling installer
 install(TARGETS stddev
-RUNTIME DESTINATION /opt/epicCalculator
-COMPONENT stddev
+        RUNTIME DESTINATION /opt/epicCalculator
+        COMPONENT stddev
 )
 
 install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
-DESTINATION /usr/share/doc/${PROJECT_NAME}-stddev
-RENAME copyright
-COMPONENT stddev
+        DESTINATION /usr/share/doc/${PROJECT_NAME}-stddev
+        RENAME copyright
+        COMPONENT stddev
 )  
 
 cpack_add_component(stddev
-DISPLAY_NAME "Stddev profiling Tool"
-DESCRIPTION  "Stddev profiling installer"
+  DISPLAY_NAME "Stddev profiling Tool"
+  DESCRIPTION  "Stddev profiling installer"
 )
 
 # ----------------------------------------------------------

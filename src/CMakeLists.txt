@@ -47,6 +47,10 @@ add_executable(stddev
     mathlib-code.cpp
 )
 
+target_compile_options(stddev PRIVATE
+    -pg
+)
+
 # Link Qt
 target_link_libraries(epicCalculator
     ${QTlib}
