@@ -68,8 +68,6 @@ set(CPACK_GENERATOR DEB)
 set(CPACK_DEB_COMPONENT_INSTALL ON)
 set(CPACK_COMPONENTS_ALL EpicCalc stddev)
 
-include(CPack)
-
 # ----------------------------------------------------------
 #Cpack configuration for Calculator installer
 install(TARGETS epicCalculator
@@ -101,12 +99,7 @@ install(FILES ${CMAKE_SOURCE_DIR}/src/icon/epic_calculator.xpm
 
 #Dependencies
 set(CPACK_DEBIAN_EPICCALC_PACKAGE_DEPENDS
-  "libc6 (>= 2.34), libstdc++6 (>= 13), libqt6core6 (>= 6.2), libqt6gui6 (>= 6.2), libqt6widgets6 (>= 6.2)"
-)
-
-cpack_add_component(EpicCalc
-  DISPLAY_NAME "Epic Calculator"
-  DESCRIPTION  "Calculator installer"
+    "libc6 (>= 2.34), libstdc++6 (>= 13), libqt6core6 (>= 6.2), libqt6gui6 (>= 6.2), libqt6widgets6 (>= 6.2)"
 )
 
 # ----------------------------------------------------------
@@ -124,6 +117,15 @@ install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
 
 set(CPACK_DEBIAN_STDDEV_PACKAGE_CONTROL_EXTRA
     "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/postinst"
+)
+
+# ----------------------------------------------------------
+#Cpack configuration for all components
+include(CPack)
+
+cpack_add_component(EpicCalc
+  DISPLAY_NAME "Epic Calculator"
+  DESCRIPTION  "Calculator installer"
 )
 
 cpack_add_component(stddev
