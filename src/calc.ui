@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>555</width>
-    <height>685</height>
+    <width>630</width>
+    <height>751</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -24,8 +24,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>555</width>
-    <height>685</height>
+    <width>570</width>
+    <height>695</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -88,6 +88,17 @@ QPushButton#ButtonDelete, QPushButton#ButtonClear {
     border-radius: 5px;
 }
 
+/*Help button*/
+QPushButton#ButtonHelp {
+	border-radius: 15px;
+    background-color: #808080;
+    color: white;
+    border: none;
+    width: 12px;
+    height: 12px;
+	font-size: 16px;
+}
+
 /*All Buttons*/
 QPushButton {
     font-size: 28px;
@@ -120,7 +131,7 @@ QPushButton#Button9:pressed {
 
 /*Funcions hover, press*/
 QPushButton#ButtonPower:hover, QPushButton#ButtonSqrt:hover, QPushButton#ButtonFactorial:hover,
-QPushButton#ButtonModulo:hover, QPushButton#AbsoluteVal:hover {
+QPushButton#ButtonModulo:hover, QPushButton#ButtonAbsoluteVal:hover {
     background-color: #555555; 
 }
 
@@ -132,13 +143,13 @@ QPushButton#ButtonModulo:pressed, QPushButton#ButtonAbsoluteVal:pressed {
 /*Operations hover, press*/
 QPushButton#ButtonAdd:hover, QPushButton#ButtonSubtract:hover, QPushButton#ButtonDivide:hover,
 QPushButton#ButtonMultiply:hover, QPushButton#ButtonOpBracket:hover, QPushButton#ButtonClBracket:hover,
-QPushButton#ButtonDecPoint:hover, QPushButton#ButtonLeftArr:hover, QPushButton#ButtonRightArr:hover {
+QPushButton#ButtonDecPoint:hover, QPushButton#ButtonLeftArr:hover, QPushButton#ButtonRightArr:hover, QPushButton#ButtonHelp:hover {
     background-color: #9E9E9E;
 }
 
 QPushButton#ButtonAdd:pressed, QPushButton#ButtonSubtract:pressed, QPushButton#ButtonDivide:pressed,
 QPushButton#ButtonMultiply:pressed, QPushButton#ButtonOpBracket:pressed, QPushButton#ButtonClBracket:pressed,
-QPushButton#ButtonDecPoint:pressed, QPushButton#ButtonLeftArr:pressed, QPushButton#ButtonRightArr:pressed {
+QPushButton#ButtonDecPoint:pressed, QPushButton#ButtonLeftArr:pressed, QPushButton#ButtonRightArr:pressed, QPushButton#ButtonHelp:pressed {
     background-color: #B0B0B0;
 }
 
@@ -175,14 +186,21 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
    </property>
    <property name="minimumSize">
     <size>
-     <width>555</width>
-     <height>685</height>
+     <width>570</width>
+     <height>695</height>
     </size>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
-     <layout class="QGridLayout" name="gridLayout" rowstretch="6,1,1,2,2,2,2">
-      <item row="0" column="0" colspan="5">
+     <layout class="QGridLayout" name="gridLayout" rowstretch="0,7,2,2,3,3,3,3">
+      <item row="0" column="5">
+       <widget class="QPushButton" name="ButtonHelp">
+        <property name="text">
+         <string>?</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="5">
        <widget class="QLineEdit" name="Display">
         <property name="enabled">
          <bool>true</bool>
@@ -211,7 +229,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="2" column="0">
        <widget class="QPushButton" name="ButtonPower">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -236,7 +254,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="2" column="1">
        <widget class="QPushButton" name="ButtonSqrt">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -258,7 +276,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
+      <item row="2" column="2">
        <widget class="QPushButton" name="ButtonFactorial">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -283,7 +301,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
+      <item row="2" column="3">
        <widget class="QPushButton" name="ButtonModulo">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -308,7 +326,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="4">
+      <item row="2" column="4">
        <widget class="QPushButton" name="ButtonAbsoluteVal">
         <property name="enabled">
          <bool>true</bool>
@@ -330,32 +348,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
-       <widget class="QPushButton" name="ButtonDelete">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>⌫</string>
-        </property>
-        <property name="shortcut">
-         <string>Backspace</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="4">
+      <item row="3" column="4">
        <widget class="QPushButton" name="ButtonClear">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -380,7 +373,57 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="3" column="3">
+       <widget class="QPushButton" name="ButtonDelete">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>⌫</string>
+        </property>
+        <property name="shortcut">
+         <string>Backspace</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="3">
+       <widget class="QPushButton" name="ButtonPlaceHolder">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#buttonPlaceholder {
+    background-color: #3B4252; 
+    border: none;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
        <widget class="QPushButton" name="Button7">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -405,7 +448,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QPushButton" name="Button8">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -430,7 +473,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
+      <item row="4" column="2">
        <widget class="QPushButton" name="Button9">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -455,7 +498,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
+      <item row="4" column="3">
        <widget class="QPushButton" name="ButtonLeftArr">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -480,7 +523,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="4">
+      <item row="4" column="4">
        <widget class="QPushButton" name="ButtonRightArr">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -505,7 +548,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QPushButton" name="Button4">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -530,7 +573,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QPushButton" name="Button5">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -555,7 +598,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="2">
+      <item row="5" column="2">
        <widget class="QPushButton" name="Button6">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -580,7 +623,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="3">
+      <item row="5" column="3">
        <widget class="QPushButton" name="ButtonMultiply">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -605,7 +648,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="4">
+      <item row="5" column="4">
        <widget class="QPushButton" name="ButtonDivide">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -630,7 +673,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
+      <item row="6" column="0">
        <widget class="QPushButton" name="Button1">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -655,7 +698,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="6" column="1">
        <widget class="QPushButton" name="Button2">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -680,7 +723,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
+      <item row="6" column="2">
        <widget class="QPushButton" name="Button3">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -705,7 +748,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="3">
+      <item row="6" column="3">
        <widget class="QPushButton" name="ButtonAdd">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -730,7 +773,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="4">
+      <item row="6" column="4">
        <widget class="QPushButton" name="ButtonSubtract">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -755,107 +798,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="6" column="0">
-       <widget class="QPushButton" name="Button0">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="shortcut">
-         <string>0</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QPushButton" name="ButtonDecPoint">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>.</string>
-        </property>
-        <property name="shortcut">
-         <string>.</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="2">
-       <widget class="QPushButton" name="ButtonOpBracket">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>(</string>
-        </property>
-        <property name="shortcut">
-         <string>(</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="3">
-       <widget class="QPushButton" name="ButtonClBracket">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>)</string>
-        </property>
-        <property name="shortcut">
-         <string>)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="4">
+      <item row="7" column="4">
        <widget class="QPushButton" name="ButtonEquals">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -880,30 +823,131 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="3">
-       <widget class="QPushButton" name="ButtonPlaceHolder">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
+      <item row="7" column="3">
+       <widget class="QPushButton" name="ButtonClBracket">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
-        <property name="styleSheet">
-         <string notr="true">#buttonPlaceholder {
-    background-color: #3B4252; 
-    border: none;
-}</string>
-        </property>
         <property name="text">
-         <string/>
+         <string>)</string>
+        </property>
+        <property name="shortcut">
+         <string>)</string>
         </property>
        </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QPushButton" name="ButtonOpBracket">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>(</string>
+        </property>
+        <property name="shortcut">
+         <string>(</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QPushButton" name="ButtonDecPoint">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>.</string>
+        </property>
+        <property name="shortcut">
+         <string>.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QPushButton" name="Button0">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+        <property name="shortcut">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5" rowspan="7">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0" colspan="5">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </item>
