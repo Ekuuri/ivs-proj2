@@ -1,1 +1,8 @@
-PLaceholder pro doxyfile
+PROJECT_NAME           = EpicCalculator
+INPUT                  = .
+OUTPUT_DIRECTORY       = ./doxygen
+RECURSIVE              = YES
+EXTRACT_ALL            = YES
+GENERATE_LATEX         = YES
+LAYOUT_FILE            = custom_layout.xml
+LATEX_EXTRA_STYLESHEET = custom.sty
