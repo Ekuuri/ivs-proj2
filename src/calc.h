@@ -54,6 +54,13 @@ public:
 
 private slots:
     /**
+     * @brief Slot to handle help button.
+     * 
+     * Shows help message.
+     */
+    void onHelpClicked();
+
+    /**
      * @brief Slot to handle number button clicks.
      * 
      * Appends the clicked number to the display.

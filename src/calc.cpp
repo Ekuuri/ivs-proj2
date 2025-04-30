@@ -19,6 +19,7 @@
 
 #include "calc.h"
 #include "parser.h"
+#include <QMessageBox>
 
 // Constructor
 Calculator::Calculator(QWidget *parent)
@@ -28,6 +29,9 @@ Calculator::Calculator(QWidget *parent)
     this->setWindowTitle("Calculator");
 
     this->setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint);
+
+    // Connect help button to coresponding slot.
+    connect(ui->ButtonHelp, &QPushButton::clicked, this, &Calculator::onHelpClicked);
 
     // Connect number buttons to corresponding slots.
     connect(ui->Button0, &QPushButton::clicked, this, &Calculator::onNumberClicked);
@@ -75,6 +79,43 @@ Calculator::~Calculator() {
 }
 
 // Slots
+void Calculator::onHelpClicked() {
+    QString helpText =
+    "Calculator Usage Help\n"
+        "   Welcome to our Calculator!\n"
+        "   Here's a quick guide to using the calculator and understanding the functions of each button:\n\n"
+
+    "Basic Controls\n"
+        "   • Digits (0-9): Tap to input numbers.\n"
+        "   • Operators (+, -, ×, ÷): Perform standard arithmetic operations.\n"
+        "   • Equals (=): Evaluates the full expression and shows the result.\n"
+        "   • Decimal point (.): Use for floating-point numbers.\n"
+        "   • Delete (DEL): Deletes the last entered character.\n"
+        "   • Clear (C/CE):\n"   
+            "       o Press once for CE to clear only the last part of the expression.\n"
+            "       o Press again for C to clear the entire input.\n"
+    "Advanced Functions\n"
+        "   • Power (x ^ n): Raises the number to a power. Example: 2^3 = 8.\n"
+        "   • Square root (n√): Calculates square root. Example: √9 = 3.\n"
+        "   • Factorial (n!): Factorial function. Example: 5! = 120.\n"
+        "   • Modulo (%): Computes remainder after division.\n"
+        "   • Absolute value (|n|): Returns absolute value. Needs to be in pair. Example: |-4| = 4.\n"
+    "Navigation\n"
+        "   • ← / →: Move the input cursor left or right in the expression for editing.\n"
+    "Brackets:\n"
+        "   • Use ( and ) to group expressions or control operation precedence.\n"
+    "Note:\n"
+        "   • Invalid expressions will not be evaluated.\n"
+        "   • Cursor navigation and editing are supported with the arrow buttons.\n";
+    
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Help");
+    msgBox.setText(helpText);
+    msgBox.setStyleSheet("QLabel{font-size: 14pt; min-width: 900px; min-height: 600px;}");
+        
+    msgBox.exec();
+}
+
 void Calculator::onNumberClicked() {
     clearErrorIfNeeded();
     QPushButton* button = qobject_cast<QPushButton*>(sender());
