@@ -339,7 +339,7 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
            <string>?</string>
           </property>
           <property name="shortcut">
-           <string>?</string>
+           <string>F1</string>
           </property>
          </widget>
         </item>
