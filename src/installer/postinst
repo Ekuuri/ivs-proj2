@@ -1,6 +1,6 @@
 #!/bin/bash
 INSTALL_PREFIX="/opt/epicCalculator"
-UNINSTALL_CALC="$INSTALL_PREFIX/uninstallCalc.sh"
+UNINSTALL_CALC="$INSTALL_PREFIX/uninstall.sh"
 UNINSTALL_DEV="$INSTALL_PREFIX/stddev/uninstallStddev.sh"
 
 desktop-file-install /usr/share/applications/epicCalculator.desktop
