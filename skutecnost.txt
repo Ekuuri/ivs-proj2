@@ -1,1 +1,4 @@
-- nastaly komplikace koncem brezna a muselo se posunout mnoho deadlinu vcetne predbezneho odevzdani
+Termíny jsme museli posunout kvůli náporu dalších projektů a zápočtů.
+Ukázalo se také, že úloha byla složitější, než jsme původně odhadli a museli jsme se více projektu pověnovat.
+Na druhou stranu jsme lépe a více rozdělili práci – GUI a parsing jsme dělali téměř ve čtyřech.
+Nakonec to (téměř) kompiluje!
