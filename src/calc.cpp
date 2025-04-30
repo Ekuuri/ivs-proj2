@@ -150,7 +150,13 @@ void Calculator::onRightArrClicked() {
 void Calculator::onEqualsClicked() {
     QString expression = ui->Display->text();
     expression.remove("▏"); // Remove any existing cursor symbol
-    ui->Display->setText(parse(expression));
+    QString result = parse(expression);
+    bool ok;
+    double number = result.toDouble(&ok);
+    if (ok) {
+        result = QString::number(number, 'f', 4);
+    }
+    ui->Display->setText(result);
     cursor_id = ui->Display->text().length(); // Move cursor to the end after evaluation
     updateVisualCursor();
 }
