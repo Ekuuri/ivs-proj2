@@ -27,25 +27,26 @@ doc:
 	
 pack: doc all
 	echo "Creating package directory $(PACK_DIR)..."
-	rm -rf $(PACK_DIR)
+	rm -fr $(PACK_DIR)
 	mkdir -p $(PACK_DIR)/repo
 	git clone .. $(PACK_DIR)/repo
 	
 	mkdir -p $(PACK_DIR)/doc
-	cp -r html/. $(PACK_DIR)/doc
+	cp -fr html $(PACK_DIR)/doc
+	cp -fr latex $(PACK_DIR)/doc
 	
-	# todo: installers
 	mkdir -p $(PACK_DIR)/install
 	cmake -G "Unix Makefiles" -S .. -B $(PACK_DIR)/install
 	cd $(PACK_DIR)/install && cmake --build . --target package
-	cd $(PACK_DIR)/install/_CPack_Packages/ && rm -fr *
-	cd $(PACK_DIR)/install && find . ! -name epicCalculator*.deb -delete
+	cd $(PACK_DIR)/install && mv *.deb ..
+	rm -fr $(PACK_DIR)/install
+	mkdir -p $(PACK_DIR)/install
+	cd $(PACK_DIR) && mv *.deb install/
 
 	echo "Zipping package into $(PACK_DIR)/$(ZIPFILE)..."
 	cd $(PACK_DIR) && zip -r $(notdir $(ZIPFILE)) .
 	cd $(PACK_DIR) && find . ! -name $(notdir $(ZIPFILE)) -delete
 	echo "Package created: $(PACK_DIR)/$(ZIPFILE)"
-	
 	
 test: all
 	./$(BUILD_DIR)/src/mathlibTest

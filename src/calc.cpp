@@ -154,7 +154,12 @@ void Calculator::onEqualsClicked() {
     bool valid;
     double number = result.toDouble(&valid);
     if (valid) {
-        result = QString::number(number, 'f', 4);
+        if (floor(number) == number) {
+            result = QString::number(number, 'f', 0);
+        }
+        else {
+            result = QString::number(number, 'f', 4);
+        }
     }
     ui->Display->setText(result);
     cursor_id = ui->Display->text().length(); // Move cursor to the end after evaluation
