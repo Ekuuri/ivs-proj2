@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #set(CMAKE_PREFIX_PATH "/home/ivs/Qt/6.8.2/gcc_64" ${CMAKE_PREFIX_PATH})
 
+# ----------------------------------------------------------
+# Qt6 configuration
 find_package(Qt6 COMPONENTS Core Gui Widgets)
 if (Qt6_FOUND)
 message(STATUS "Found Qt6")
@@ -21,6 +23,8 @@ include(GNUInstallDirs)
 option(BUILD_GMOCK "Builds the googlemock subproject" ON)
 option(INSTALL_GTEST "Enable installation of googletest. (Projects embedding googletest may want to turn this OFF.)" ON)
 
+# ----------------------------------------------------------
+# GoogleTest submodule initialization
 file(GLOB DIR_CONTENT ${GTEST_DIR}/*)
 if(NOT DIR_CONTENT)
 execute_process(
@@ -50,6 +54,7 @@ include_directories(${GTEST_DIR}/googletest/include)
 
 add_subdirectory(src)
 
+# ----------------------------------------------------------
 #Cpack configuration for Calculator and Profiling installer
 #Informations about package
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
@@ -65,6 +70,7 @@ set(CPACK_COMPONENTS_ALL EpicCalc stddev)
 
 include(CPack)
 
+# ----------------------------------------------------------
 #Cpack configuration for Calculator installer
 install(TARGETS epicCalculator
 RUNTIME DESTINATION /opt/${PROJECT_NAME}
@@ -99,15 +105,19 @@ cpack_add_component(EpicCalc
   DESCRIPTION  "Calculator installer"
 )
 
+# ----------------------------------------------------------
 #Cpack configuration for Profiling installer
 install(TARGETS stddev
         RUNTIME DESTINATION /usr/bin
-        COMPONENT stddev)
+        COMPONENT stddev
+)
 
 install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
         DESTINATION /usr/share/doc/${PROJECT_NAME}-stddev
-                         RENAME copyright
-                        COMPONENT stddev)   
+        RENAME copyright
+        COMPONENT stddev
+)  
+
 cpack_add_component(stddev
 DISPLAY_NAME "Stddev profiling Tool"
 DESCRIPTION  "Stddev profiling installer"
