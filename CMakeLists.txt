@@ -73,27 +73,31 @@ include(CPack)
 # ----------------------------------------------------------
 #Cpack configuration for Calculator installer
 install(TARGETS epicCalculator
-RUNTIME DESTINATION /opt/${PROJECT_NAME}
-COMPONENT EpicCalc)
+        RUNTIME DESTINATION /opt/${PROJECT_NAME}
+        COMPONENT EpicCalc
+)
 
 install(FILES src/installer/${PROJECT_NAME}.desktop
-DESTINATION /usr/share/applications
-COMPONENT EpicCalc)
+        DESTINATION /usr/share/applications
+        COMPONENT EpicCalc
+)
 
 install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
         DESTINATION /usr/share/doc/${PROJECT_NAME}
         RENAME copyright
-        COMPONENT EpicCalc)
+        COMPONENT EpicCalc
+)
 
 set(CPACK_DEBIAN_EpicCalc_PACKAGE_CONTROL_EXTRA
-"${CMAKE_CURRENT_SOURCE_DIR}/src/installer/postinst"
-"${CMAKE_CURRENT_SOURCE_DIR}/src/installer/prerun")
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/postinst"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/prerun"
+)
 
 #Icon
-install(FILES
-${CMAKE_SOURCE_DIR}/src/icon/epic_calculator.xpm
-                  DESTINATION /usr/share/pixmaps
-                              COMPONENT EpicCalc)
+install(FILES ${CMAKE_SOURCE_DIR}/src/icon/epic_calculator.xpm
+        DESTINATION /usr/share/pixmaps
+        COMPONENT EpicCalc
+)
 
 #Dependencies
 set(CPACK_DEBIAN_EpicCalc_PACKAGE_DEPENDS
@@ -108,7 +112,7 @@ cpack_add_component(EpicCalc
 # ----------------------------------------------------------
 #Cpack configuration for Profiling installer
 install(TARGETS stddev
-        RUNTIME DESTINATION /usr/bin
+        RUNTIME DESTINATION /opt/stddev
         COMPONENT stddev
 )
 

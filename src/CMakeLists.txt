@@ -49,11 +49,11 @@ add_executable(stddev
 
 # Link Qt
 target_link_libraries(epicCalculator
-    QTlib
+    ${QTlib}
 )
 
 target_link_libraries(mathlibTest
     gtest
     gtest_main
-    QTlib
+    ${QTlib}
 )

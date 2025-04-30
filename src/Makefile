@@ -12,6 +12,7 @@ ZIPFILE = $(PACK_DIR).zip
 
 all: $(BUILD_DIR)/Makefile
 	$(MAKE) -C $(BUILD_DIR)
+#cmake --install $(BUILD_DIR) --component epicCalc
 	
 $(BUILD_DIR)/Makefile:
 	mkdir -p $(BUILD_DIR)
@@ -55,6 +56,7 @@ run: all
 
 stddev: $(BUILD_DIR)/Makefile
 	cmake --build $(BUILD_DIR) --target stddev
+#cmake --install $(BUILD_DIR) --component stddev
 	
 .PHONY: all clean doc pack test run stddev
 	
