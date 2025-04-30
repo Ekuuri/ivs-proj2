@@ -1,8 +1,8 @@
-EPIC CALCULATOR + program na výpočet směrodatné odchylky stddev
+Epic calculator + program na výpočet směrodatné odchylky stddev
 ----------------------------------------------------------------
 Kalkulačka s vlastní matematickou knihovnou, schopná provádět základní aritmetické operace, výpočet faktoriálu, umocňováním s přirozenými exponenty, obecnou odmocninou a funkci modulo.
 
-INSTALACE
+Instalace
 ---------------
 Instalaci je možné provést skrze instalační balíčky debian (v případě potřeby bližší popis naleznete v uživatelské dokumentaci), nebo vystavěním programu ze zdrojových souborů:
 
@@ -25,7 +25,9 @@ Poté postupujte následovně:
         "cmake --install ../build --component stddev"
         Obě komponenty:
         "cmake --install ../build"
-
+Odinstalace
+---------------
+Skrze příkaz "sudo apt remove" (viz programová dokumentace), nebo skrze uninstaller příkazem: "/opt/epicCalculator/uninstall.sh"
 
 Prostředí
 ---------
