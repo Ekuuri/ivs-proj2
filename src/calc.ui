@@ -338,6 +338,9 @@ QPushButton#ButtonDelete:pressed, QPushButton#ButtonClear:pressed {
           <property name="text">
            <string>?</string>
           </property>
+          <property name="shortcut">
+           <string>?</string>
+          </property>
          </widget>
         </item>
        </layout>
