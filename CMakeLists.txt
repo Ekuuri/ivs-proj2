@@ -112,14 +112,14 @@ cpack_add_component(EpicCalc
 # ----------------------------------------------------------
 #Cpack configuration for Profiling installer
 install(TARGETS stddev
-        RUNTIME DESTINATION /opt/stddev
-        COMPONENT stddev
+RUNTIME DESTINATION /opt/epicCalculator
+COMPONENT stddev
 )
 
 install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
-        DESTINATION /usr/share/doc/${PROJECT_NAME}-stddev
-        RENAME copyright
-        COMPONENT stddev
+DESTINATION /usr/share/doc/${PROJECT_NAME}-stddev
+RENAME copyright
+COMPONENT stddev
 )  
 
 cpack_add_component(stddev
@@ -127,4 +127,20 @@ DISPLAY_NAME "Stddev profiling Tool"
 DESCRIPTION  "Stddev profiling installer"
 )
 
+# ----------------------------------------------------------
+# Generate an uninstall script after installation
+set(CMAKE_INSTALL_PREFIX "/opt/epicCalculator" CACHE PATH "Installation directory" FORCE)
 
+# Make a copy of the install manifest
+# Credit to https://stackoverflow.com/a/66804151
+install(CODE "string(REPLACE \";\" \"\\n\" MY_CMAKE_INSTALL_MANIFEST_CONTENT \"\$\{CMAKE_INSTALL_MANIFEST_FILES\}\")\n\
+              file(WRITE \${CMAKE_INSTALL_PREFIX}/install_manifest.txt \"\$\{MY_CMAKE_INSTALL_MANIFEST_CONTENT\}\")")
+
+install(CODE "
+    file(WRITE \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"#!/bin/bash\\n\")
+    file(APPEND \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"echo 'Uninstalling...\\n'\\n\")
+    file(APPEND \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"xargs rm < \${CMAKE_INSTALL_PREFIX}/install_manifest.txt\\n\")
+    file(APPEND \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"rm -fr \${CMAKE_INSTALL_PREFIX}\\n\")
+    file(APPEND \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"echo 'Uninstallation complete.\\n'\")
+    execute_process(COMMAND chmod +x \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\")
+")
