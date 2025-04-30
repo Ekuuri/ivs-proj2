@@ -151,9 +151,9 @@ void Calculator::onEqualsClicked() {
     QString expression = ui->Display->text();
     expression.remove("▏"); // Remove any existing cursor symbol
     QString result = parse(expression);
-    bool ok;
-    double number = result.toDouble(&ok);
-    if (ok) {
+    bool valid;
+    double number = result.toDouble(&valid);
+    if (valid) {
         result = QString::number(number, 'f', 4);
     }
     ui->Display->setText(result);
