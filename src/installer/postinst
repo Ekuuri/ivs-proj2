@@ -5,3 +5,21 @@ UNINSTALL_DEV="$INSTALL_PREFIX/stddev/uninstallStddev.sh"
 
 desktop-file-install /usr/share/applications/epicCalculator.desktop
 chmod +x $INSTALL_PREFIX/epicCalculator
+
+if [ -f "$INSTALL_PREFIX/epicCalculator" ]; then
+    touch $UNINSTALL_CALC
+    echo "#!/bin/bash" > $UNINSTALL_CALC
+    echo "sudo apt remove epiccalculator-epiccalc" >> $UNINSTALL_CALC
+    echo "echo 'Uninstalled epiccalculator-epiccalc successfully'" >> $UNINSTALL_CALC
+    echo "sudo rm -fr $INSTALL_PREFIX" >> $UNINSTALL_CALC
+    chmod +x $UNINSTALL_CALC
+fi
+
+if [ -f "$INSTALL_PREFIX/stddev/stddev" ]; then
+    touch $UNINSTALL_DEV
+    echo "#!/bin/bash" > $UNINSTALL_DEV
+    echo "sudo apt remove epiccalculator-stddev" >> $UNINSTALL_DEV
+    echo "echo 'Uninstalled epiccalculator-stddev successfully'" >> $UNINSTALL_DEV
+    echo "sudo rm -fr $INSTALL_PREFIX/stddev" >> $UNINSTALL_DEV
+    chmod +x $UNINSTALL_DEV
+fi
