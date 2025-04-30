@@ -1,4 +1,4 @@
-xlescet00 100 (repozitář, Make file, prezentace, část GUI)
-xjedliv01 100 (testy, část instalátoru, část příručky, část dokumentace)
-xfurism00 100 (matematická knihovna, profiling, debugging)
-xsrajed00 100 (část GUI, část instalátoru, část příručky, část dokumentace)
+xlescet00 100 (Make file, parsing, prezentace)
+xjedliv01 100 (testy knihovny, instalátory, dokumentace)
+xfurism00 100 (matematická knihovna, profiling, parsing)
+xsrajed00 100 (GUI, příručka, dokumentace)
