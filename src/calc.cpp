@@ -25,7 +25,7 @@ Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Calculator) {
     // Setup the user interface from the .ui file.
     ui->setupUi(this);
-    this->setWindowTitle("Calculator");
+    this->setWindowTitle("EpicCalculator");
 
     this->setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint);
 
