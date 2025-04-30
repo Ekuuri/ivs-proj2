@@ -88,9 +88,9 @@ install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
         COMPONENT EpicCalc
 )
 
-set(CPACK_DEBIAN_EpicCalc_PACKAGE_CONTROL_EXTRA
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/postinst"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/prerun"
+set(CPACK_DEBIAN_EPICCALC_PACKAGE_CONTROL_EXTRA
+    "${CMAKE_SOURCE_DIR}/src/installer/postinst"
+    "${CMAKE_SOURCE_DIR}/src/installer/prerun"
 )
 
 #Icon
@@ -100,7 +100,7 @@ install(FILES ${CMAKE_SOURCE_DIR}/src/icon/epic_calculator.xpm
 )
 
 #Dependencies
-set(CPACK_DEBIAN_EpicCalc_PACKAGE_DEPENDS
+set(CPACK_DEBIAN_EPICCALC_PACKAGE_DEPENDS
   "libc6 (>= 2.34), libstdc++6 (>= 13), libqt6core6 (>= 6.2), libqt6gui6 (>= 6.2), libqt6widgets6 (>= 6.2)"
 )
 
@@ -112,7 +112,7 @@ cpack_add_component(EpicCalc
 # ----------------------------------------------------------
 #Cpack configuration for Profiling installer
 install(TARGETS stddev
-        RUNTIME DESTINATION /opt/epicCalculator
+        RUNTIME DESTINATION /opt/${PROJECT_NAME}/stddev
         COMPONENT stddev
 )
 
@@ -122,25 +122,11 @@ install(FILES ${CMAKE_SOURCE_DIR}/LICENSE
         COMPONENT stddev
 )  
 
+set(CPACK_DEBIAN_STDDEV_PACKAGE_CONTROL_EXTRA
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/installer/postinst"
+)
+
 cpack_add_component(stddev
   DISPLAY_NAME "Stddev profiling Tool"
   DESCRIPTION  "Stddev profiling installer"
 )
-
-# ----------------------------------------------------------
-# Generate an uninstall script after installation
-set(CMAKE_INSTALL_PREFIX "/opt/epicCalculator" CACHE PATH "Installation directory" FORCE)
-
-# Make a copy of the install manifest
-# Credit to https://stackoverflow.com/a/66804151
-install(CODE "string(REPLACE \";\" \"\\n\" MY_CMAKE_INSTALL_MANIFEST_CONTENT \"\$\{CMAKE_INSTALL_MANIFEST_FILES\}\")\n\
-              file(WRITE \${CMAKE_INSTALL_PREFIX}/install_manifest.txt \"\$\{MY_CMAKE_INSTALL_MANIFEST_CONTENT\}\")")
-
-install(CODE "
-    file(WRITE \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"#!/bin/bash\\n\")
-    file(APPEND \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"echo 'Uninstalling...\\n'\\n\")
-    file(APPEND \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"xargs rm < \${CMAKE_INSTALL_PREFIX}/install_manifest.txt\\n\")
-    file(APPEND \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"rm -fr \${CMAKE_INSTALL_PREFIX}\\n\")
-    file(APPEND \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\" \"echo 'Uninstallation complete.\\n'\")
-    execute_process(COMMAND chmod +x \"\${CMAKE_INSTALL_PREFIX}/uninstall.sh\")
-")
