@@ -200,7 +200,7 @@ void Calculator::onEqualsClicked() {
         }
         else {
             result = QString::number(number, 'f', 4);
-            result = result.replace(QRegularExpression("([\\.][0-9]*?)0+$"), "\\1");
+            result = result.replace(QRegularExpression("([\\.][0-9]*?)0+$"), "\\1"); // Remove unnecessary zeros after decimal point
         }
     }
     ui->Display->setText(result);
