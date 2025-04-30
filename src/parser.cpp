@@ -13,8 +13,8 @@
 * @author Tobias Leščenko
 * @author Marek Furiš
 *
+* @see https://youtu.be/SToUyjAsaFk?si=aFa6burREqaeNsVg
 * @warning no ability to work with numbers in scientific notation
-* @bug absolute value doesn't work
 */
 
 #include "parser.h"
@@ -71,7 +71,7 @@ TreeNode* parseFactor() {
         }
 
         // Check for implicit multiplication (e.g., 2(3)), which is not supported
-        if (nextToken == '(' || nextToken == '|') {
+        if (nextToken == '(') {
             throw std::runtime_error("Error: Invalid input");
         }
         
